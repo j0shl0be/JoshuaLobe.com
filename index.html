@@ -1,52 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Work in Progress</title>
-  <style>
-    body {
-      background: #111;
-      color: #eee;
-      font-family: Arial, sans-serif;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      margin: 0;
-      text-align: center;
-    }
-    .container {
-      max-width: 500px;
-    }
-    h1 {
-      font-size: 2rem;
-      margin-bottom: 0.5rem;
-    }
-    p {
-      font-size: 1.1rem;
-      color: #aaa;
-    }
-    .loader {
-      margin: 1.5rem auto;
-      border: 6px solid #333;
-      border-top: 6px solid #eee;
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      animation: spin 1s linear infinite;
-    }
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 — Something's Broken</title>
+    <meta name="color-scheme" content="dark light">
+    <style>
+        :root {
+            --bg: #ffffff;
+            --fg: #0a0a0a;
+            --muted: #666666;
+            --card: #f6f6f7;
+            --border: #e5e5e5;
+            --accent: #2563eb;
+            --accent-contrast: #ffffff;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #0b0b0f;
+                --fg: #fafafa;
+                --muted: #a1a1aa;
+                --card: #0f1115;
+                --border: #25262b;
+            }
+        }
+
+        html, body { height: 100%; }
+
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: var(--bg);
+            color: var(--fg);
+            display: grid;
+            place-items: center;
+        }
+
+        .wrap {
+            max-width: 720px;
+            padding: 32px 20px 40px;
+            text-align: center;
+        }
+
+        .hazard {
+            width: 100%;
+            height: 14px;
+            margin-bottom: 22px;
+            background-image: repeating-linear-gradient(45deg, #facc15 0 16px, #111827 16px 32px);
+            border-radius: 10px;
+            box-shadow: 0 0 0 1px var(--border) inset;
+        }
+
+        .icon { font-size: 56px; line-height: 1; }
+
+        h1 {
+            margin: 12px 0 8px;
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        p.lead {
+            margin: 0 auto 18px;
+            max-width: 52ch;
+            color: var(--muted);
+        }
+
+        .console {
+            text-align: left;
+            margin: 18px auto 24px;
+            max-width: 640px;
+            padding: 14px 16px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+            font-size: 13px;
+            color: var(--muted);
+            white-space: pre-wrap;
+        }
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 6px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 14px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            background: var(--card);
+            color: var(--fg);
+            text-decoration: none;
+            transition: transform 0.06s ease, background 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
+        }
+
+        .btn:hover { transform: translateY(-1px); }
+
+        .btn.primary {
+            background: var(--accent);
+            border-color: transparent;
+            color: var(--accent-contrast);
+        }
+
+        .hint {
+            margin-top: 18px;
+            font-size: 12px;
+            color: var(--muted);
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <h1>🚧 Work in Progress</h1>
-    <div class="loader"></div>
-    <p>Our site is being updated.<br>Please check back soon!</p>
-  </div>
+    <main class="wrap">
+        <div class="hazard"></div>
+        <div class="icon">🛠️</div>
+        <h1>Something's broken — roomate probably kicked my server.</h1>
+        <p class="lead">We tried to assemble this page, but a part went missing. It's probably a loose connector (or a typo in the URL).</p>
+        <pre class="console">[E404] PageNotFoundError
+> requested: <span id="path">/unknown</span>
+> action: return to base or file a bug report
+> status: awaiting field report…</pre>
+        <div class="actions">
+            <a class="btn primary" id="emailLink" href="mailto:hello@joshualobe.com?subject=404%20on%20JoshuaLobe.com&body=URL%3A%20{URL}%0A%0AWhat%20you%20were%20doing%3A%20%0A%0AExpected%20result%3A%20%0A%0AActual%20result%3A%20">Report Bug via Email</a>
+            <a class="btn" href="/#contact">Go to Contact</a>
+            <a class="btn" href="/">Back to Home</a>
+        </div>
+        <div class="hint">💡 Tip: Try turning it off and on again. If that fails, bring a multimeter.</div>
+    </main>
+
+    <script>
+        // Auto-fill the current path and email body with the failing URL
+        document.addEventListener('DOMContentLoaded', function () {
+            var pathSpan = document.getElementById('path');
+            if (pathSpan) { 
+                pathSpan.textContent = window.location.pathname; 
+            }
+
+            var email = document.getElementById('emailLink');
+            if (email) {
+                try {
+                    var url = new URL(email.href);
+                    var body = url.searchParams.get('body') || '';
+                    body = body.replace('{URL}', encodeURIComponent(window.location.href));
+                    url.searchParams.set('body', body);
+                    email.href = url.toString();
+                } catch (e) {
+                    // Fallback if URL parsing fails
+                    console.log('Could not update email link:', e);
+                }
+            }
+        });
+    </script>
 </body>
 </html>
