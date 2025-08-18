@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>MycroFleet Sensor Network — Joshua Lobe</title>
+  <meta name="description" content="Low-cost distributed sensors for smallholder farms; embedded firmware + backend APIs." />
+  <meta property="og:title" content="MycroFleet Sensor Network" />
+  <meta property="og:description" content="Low-cost distributed sensors for smallholder farms; embedded firmware + backend APIs." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://joshualobe.com/projects/mycrofleet.html" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>.glow{box-shadow:0 0 0 1px rgba(255,255,255,.06),0 10px 30px rgba(0,0,0,.2)}</style>
+</head>
+<body class="bg-white text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100 antialiased">
+  <div id="site-header"></div>
+
+  <main class="mx-auto max-w-3xl px-6 py-10 md:py-16">
+    <a href="/" class="text-sm text-blue-600 dark:text-blue-400 hover:underline">← Back to Home</a>
+    <h1 class="mt-4 text-3xl md:text-4xl font-extrabold tracking-tight">MycroFleet Sensor Network</h1>
+    <p class="mt-2 text-zinc-500">2024–present • Embedded • IoT • Agriculture</p>
+
+    <figure class="mt-6 rounded-3xl overflow-hidden glow bg-zinc-100 dark:bg-zinc-900 aspect-video flex items-center justify-center">
+      <span class="text-zinc-400">[ project image placeholder ]</span>
+    </figure>
+
+    <section class="mt-8 prose prose-zinc dark:prose-invert max-w-none">
+      <h2>Overview</h2>
+      <p>
+        MycroFleet is an affordable sensor fleet for 1–5 acre farms. It focuses on simple deployment, robust data,
+        and long battery life.
+      </p>
+
+      <h2>My role</h2>
+      <ul>
+        <li>Firmware (FreeRTOS, low-power, OTA-ready architecture)</li>
+        <li>PCB bring-up & instrumentation</li>
+        <li>FastAPI microservice for data ingest</li>
+      </ul>
+
+      <h2>Architecture</h2>
+      <p>ESP32 nodes → Gateway → FastAPI → Timeseries DB (e.g., Influx/Timescale) → Grafana dashboards.</p>
+
+      <h2>Highlights</h2>
+      <ul>
+        <li>Sub-$25 BOM per node (target)</li>
+        <li>LoRa/2.4 GHz variants</li>
+        <li>Field-safe OTA staging</li>
+      </ul>
+
+      <h2>Code & links</h2>
+      <p>
+        <a href="#" class="underline">Firmware repo</a> •
+        <a href="#" class="underline">Gateway service</a>
+      </p>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="/assets/js/includes.js"></script>
+</body>
+</html>

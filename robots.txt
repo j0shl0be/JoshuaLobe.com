@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://joshualobe.com/sitemap.xml

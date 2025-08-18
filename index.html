@@ -12,32 +12,19 @@
   <meta name="color-scheme" content="dark light" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛠️</text></svg>">
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .glow { box-shadow: 0 0 0 1px rgba(255,255,255,0.06), 0 10px 30px rgba(0,0,0,0.2); }
+  </style>
   <script>
-    // Minimal dark-mode preference (honours system)
     if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
       document.documentElement.classList.add('dark')
     } else {
       document.documentElement.classList.remove('dark')
     }
   </script>
-  <style>
-    /* subtle glow for cards */
-    .glow { box-shadow: 0 0 0 1px rgba(255, 0, 0, 0.06), 0 10px 30px rgba(0,0,0,0.2); }
-  </style>
 </head>
 <body class="bg-white text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100 antialiased">
-  <!-- Nav -->
-  <header class="sticky top-0 z-50 backdrop-blur bg-white/70 dark:bg-zinc-950/70 border-b border-zinc-200/60 dark:border-zinc-800/60">
-    <div class="mx-auto max-w-6xl px-6 py-4 flex items-center justify-between">
-      <a href="#" class="font-semibold tracking-tight">joshualobe.com</a>
-      <nav class="flex items-center gap-4 text-sm">
-        <a href="#projects" class="hover:opacity-80">Projects</a>
-        <a href="#about" class="hover:opacity-80">About</a>
-        <a href="#contact" class="hover:opacity-80">Contact</a>
-        <button id="themeToggle" class="rounded-xl px-3 py-1 glow bg-zinc-100 dark:bg-zinc-900">🌓</button>
-      </nav>
-    </div>
-  </header>
+  <div id="site-header"></div>
 
   <!-- Hero -->
   <section class="mx-auto max-w-6xl px-6 py-16 md:py-24">
@@ -79,26 +66,28 @@
       <a href="#contact" class="text-sm hover:opacity-80">Open to internships & collabs →</a>
     </div>
     <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      <!-- Project Card -->
+      <!-- Project Card: MycroFleet -->
       <article class="rounded-3xl glow p-5 bg-white dark:bg-zinc-950">
         <div class="aspect-video rounded-2xl bg-zinc-100 dark:bg-zinc-900"></div>
         <h3 class="mt-4 text-xl font-semibold">MycroFleet Sensor Network</h3>
         <p class="mt-2 text-zinc-600 dark:text-zinc-300">Low-cost distributed sensors for smallholder farms; embedded firmware + backend APIs.</p>
-        <a class="mt-3 inline-block text-blue-600 dark:text-blue-400 hover:underline" href="#" target="_blank" rel="noreferrer">Read more</a>
+        <a class="mt-3 inline-block text-blue-600 dark:text-blue-400 hover:underline" href="/projects/mycrofleet.html">Read more</a>
       </article>
 
+      <!-- Project Card: KB2040 Macropad -->
       <article class="rounded-3xl glow p-5 bg-white dark:bg-zinc-950">
         <div class="aspect-video rounded-2xl bg-zinc-100 dark:bg-zinc-900"></div>
         <h3 class="mt-4 text-xl font-semibold">KB2040 Macropad (TinyUSB HID)</h3>
         <p class="mt-2 text-zinc-600 dark:text-zinc-300">Custom firmware with multi-layer mapping, OLED UI, and USB HID using Adafruit TinyUSB.</p>
-        <a class="mt-3 inline-block text-blue-600 dark:text-blue-400 hover:underline" href="#" target="_blank" rel="noreferrer">Firmware</a>
+        <a class="mt-3 inline-block text-blue-600 dark:text-blue-400 hover:underline" href="/projects/kb2040-macropad.html">Read more</a>
       </article>
 
+      <!-- Project Card: Robotics Sensing -->
       <article class="rounded-3xl glow p-5 bg-white dark:bg-zinc-950">
         <div class="aspect-video rounded-2xl bg-zinc-100 dark:bg-zinc-900"></div>
         <h3 class="mt-4 text-xl font-semibold">Robotics Sensing Experiments</h3>
         <p class="mt-2 text-zinc-600 dark:text-zinc-300">Force/torque sensing setups for manipulation; data pipelines and control prototyping.</p>
-        <a class="mt-3 inline-block text-blue-600 dark:text-blue-400 hover:underline" href="#" target="_blank" rel="noreferrer">Notes</a>
+        <a class="mt-3 inline-block text-blue-600 dark:text-blue-400 hover:underline" href="/projects/robotics-sensing.html">Read more</a>
       </article>
     </div>
   </section>
@@ -114,7 +103,7 @@
         </p>
         <ul class="mt-4 grid sm:grid-cols-2 gap-3 text-sm">
           <li class="rounded-xl border border-zinc-200 dark:border-zinc-800 p-3">Arduino, ESP-IDF, FreeRTOS</li>
-          <li class="rounded-xl border border-zinc-200 dark:border-zinc-800 p-3">PCB bring-up, instrumentation</li>
+          <li class="rounded-xl border border-zinc-200 dark:border-zinc-800 p-3">PCB bring-up & instrumentation</li>
           <li class="rounded-xl border border-zinc-200 dark:border-zinc-800 p-3">Simulink & control modeling</li>
           <li class="rounded-xl border border-zinc-200 dark:border-zinc-800 p-3">Python tooling, FastAPI</li>
         </ul>
@@ -124,4 +113,21 @@
         <ul class="mt-3 space-y-2 text-sm text-zinc-600 dark:text-zinc-300">
           <li>Vertical farm automation systems</li>
           <li>Custom macropad w/ OLED UI</li>
-          <li
+          <li>Robotics sensing & control testing</li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="mx-auto max-w-6xl px-6 pb-20">
+    <div class="rounded-3xl glow p-6 bg-white dark:bg-zinc-950">
+      <h2 class="text-2xl font-bold tracking-tight">Contact</h2>
+      <p class="mt-2 text-zinc-600 dark:text-zinc-300">Email: <a class="underline" href="mailto:hello@joshualobe.com">hello@joshualobe.com</a></p>
+    </div>
+  </section>
+
+  <div id="site-footer"></div>
+  <script src="/assets/js/includes.js"></script>
+</body>
+</html>
