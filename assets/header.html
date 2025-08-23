@@ -1,8 +1,40 @@
+ 
+<style>
+  /* Brand dropdown */
+  .brand-dropdown { position: relative; }
+  .brand-dropdown details { position: relative; }
+  .brand-dropdown summary { cursor: pointer; list-style: none; display: inline-flex; align-items: center; gap: 6px; }
+  .brand-dropdown summary::-webkit-details-marker { display: none; }
+  .brand-dropdown .menu { position: absolute; top: 100%; left: 0; margin-top: 8px; min-width: 240px; background: #fff; color: inherit; border: 1px solid #e5e5e5; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); padding: 8px; z-index: 60; }
+  html.dark .brand-dropdown .menu { background: #0f1115; border-color: #25262b; }
+  .brand-dropdown .menu a { display: block; padding: 8px 10px; border-radius: 8px; text-decoration: none; color: inherit; }
+  .brand-dropdown .menu a:hover { background: #f6f6f7; }
+  html.dark .brand-dropdown .menu a:hover { background: #18181b; }
+</style>
+<style>
+  /* Simulate DevTools color-scheme toggle for darkMode:'media' */
+  @media (prefers-color-scheme: dark) {
+    html[data-theme="light"] { filter: invert(1) hue-rotate(180deg); }
+  }
+  @media (prefers-color-scheme: light) {
+    html[data-theme="dark"] { filter: invert(1) hue-rotate(180deg); }
+  }
+</style>
 <header class="sticky top-0 z-50 backdrop-blur bg-white/70 dark:bg-zinc-950/70 border-b border-zinc-200/60 dark:border-zinc-800/60">
     <div class="mx-auto max-w-6xl px-6 py-4 flex items-center justify-between">
-      <a href="/" class="font-semibold tracking-tight">joshualobe.com</a>
+      <div class="brand-dropdown">
+        <details>
+          <summary class="font-semibold tracking-tight">Joshua Lobe <span aria-hidden>▾</span></summary>
+          <div class="menu" role="menu" aria-label="Subdomains">
+            <a href="/" role="menuitem">Home</a>
+            <a href="https://jellyfin.joshualobe.com" target="_blank" rel="noreferrer" role="menuitem">Jellyfin</a>
+            <a href="https://qb.joshualobe.com" target="_blank" rel="noreferrer" role="menuitem">qBittorrent</a>
+            <a href="https://lab.joshualobe.com" target="_blank" rel="noreferrer" role="menuitem">Lab</a>
+          </div>
+        </details>
+      </div>
       <nav class="flex items-center gap-4 text-sm">
-        <a href="/#projects" class="hover:opacity-80">Projects</a>
+        <a href="/projects/" class="hover:opacity-80">Projects</a>
         <a href="/#about" class="hover:opacity-80">About</a>
         <a href="/#contact" class="hover:opacity-80">Contact</a>
         <button id="themeToggle" class="rounded-xl px-3 py-1 glow bg-zinc-100 dark:bg-zinc-900">🌓</button>

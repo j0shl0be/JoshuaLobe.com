@@ -4,12 +4,31 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="color-scheme" content="dark light" />
-  <title>Sonos Controller — Joshua Lobe</title>
-  <meta name="description" content="Custom Sonos controller project details." />
+  <title>Projects — Joshua Lobe</title>
+  <meta name="description" content="All projects by Joshua Lobe: embedded systems, robotics, automation, and more." />
+  <meta property="og:title" content="Projects — Joshua Lobe" />
+  <meta property="og:description" content="Browse all projects in embedded systems, firmware, robotics, and tooling." />
+  <meta property="og:type" content="website" />
   <script>
-    tailwind = { config: { darkMode: 'media' } };
+    // Tailwind CDN config before load with safelist
+    tailwind = { config: {
+      darkMode: 'media',
+      safelist: [
+        'sticky','top-0','z-50','backdrop-blur',
+        'bg-white/70','dark:bg-zinc-950/70','border-b','border-zinc-200/60','dark:border-zinc-800/60',
+        'font-semibold','tracking-tight',
+        'flex','items-center','gap-4','text-sm',
+        'hover:opacity-80',
+        'rounded-xl','px-3','py-1','bg-zinc-100','dark:bg-zinc-900',
+        'mt-20','border-t','text-zinc-500','max-w-6xl','py-10','px-6','mx-auto',
+        'dark:bg-zinc-950','dark:bg-zinc-900','dark:text-zinc-100','dark:text-zinc-300','dark:text-blue-400',
+        'dark:border-zinc-800','dark:border-zinc-800/60','dark:hover:bg-zinc-900',
+        'dark:bg-zinc-950/70','dark:bg-zinc-900/70','dark:from-zinc-900','dark:to-zinc-800','dark:prose-invert'
+      ]
+    }};
   </script>
-  <script src="https://cdn.tailwindcss.com?v=3.4.0"></script>
+  <script src="https://cdn.tailwindcss.com?plugins=typography&v=3.4.0"></script>
+  <style>.glow{box-shadow:0 0 0 1px rgba(255,255,255,.06),0 10px 30px rgba(0,0,0,.2)}</style>
   <script>
     // Apply saved theme preference before paint (robust: read item or property)
     (function() {
@@ -24,7 +43,6 @@
       } catch (e) {}
     })();
   </script>
-  <style>.glow{box-shadow:0 0 0 1px rgba(255,255,255,.06),0 10px 30px rgba(0,0,0,.2)}</style>
   <style>
     .scroll-shape { position: fixed; top: 0; right: 0; height: 100vh; width: clamp(220px, 28vw, 420px); pointer-events: none; opacity: 0.2; z-index: 0; }
     .scroll-shape svg { width: 100%; height: 100%; display: block; }
@@ -48,7 +66,6 @@
 </head>
 <body class="bg-white text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100 antialiased">
   <div id="site-header"></div>
-
   <div class="scroll-shape" aria-hidden="true">
     <svg id="netSvg" viewBox="0 0 400 800" preserveAspectRatio="none">
       <defs>
@@ -76,12 +93,35 @@
     </svg>
   </div>
 
-  <main class="mx-auto max-w-3xl px-6 py-10 md:py-16">
-    <a href="/projects/" class="text-sm text-blue-600 dark:text-blue-400 hover:underline">← All Projects</a>
-    <h1 class="mt-4 text-3xl md:text-4xl font-extrabold tracking-tight">Sonos Controller</h1>
-    <section class="mt-6 rounded-3xl glow p-6 bg-white dark:bg-zinc-950">
-      <p class="text-zinc-700 dark:text-zinc-300">Coming soon.</p>
-    </section>
+  <main class="mx-auto max-w-6xl px-6 py-12 md:py-16">
+    <div class="flex items-end justify-between">
+      <h1 class="text-2xl md:text-3xl font-bold tracking-tight">All Projects</h1>
+      <a href="/" class="text-sm hover:opacity-80">← Back to Home</a>
+    </div>
+
+    <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <article class="rounded-3xl glow p-5 bg-white dark:bg-zinc-950">
+        <div class="aspect-video rounded-2xl bg-zinc-100 dark:bg-zinc-900"></div>
+        <h3 class="mt-4 text-xl font-semibold">MycroFleet Sensor Network</h3>
+        <p class="mt-2 text-zinc-600 dark:text-zinc-300">Low-cost distributed sensors for smallholder farms; embedded firmware + backend APIs.</p>
+        <a class="mt-3 inline-block text-blue-600 dark:text-blue-400 hover:underline" href="/projects/MycroFleet.html">Read more</a>
+      </article>
+
+      <article class="rounded-3xl glow p-5 bg-white dark:bg-zinc-950">
+        <div class="aspect-video rounded-2xl bg-zinc-100 dark:bg-zinc-900"></div>
+        <h3 class="mt-4 text-xl font-semibold">KB2040 Macropad (TinyUSB HID)</h3>
+        <p class="mt-2 text-zinc-600 dark:text-zinc-300">Custom firmware with multi-layer mapping, OLED UI, and USB HID.</p>
+        <a class="mt-3 inline-block text-blue-600 dark:text-blue-400 hover:underline" href="/projects/kb2040-macropad.html">Read more</a>
+      </article>
+
+      <!-- Placeholder cards for future projects; add as needed -->
+      <article class="rounded-3xl glow p-5 bg-white dark:bg-zinc-950">
+        <div class="aspect-video rounded-2xl bg-zinc-100 dark:bg-zinc-900"></div>
+        <h3 class="mt-4 text-xl font-semibold">Robotics Sensing Experiments</h3>
+        <p class="mt-2 text-zinc-600 dark:text-zinc-300">Force/torque sensing setups for manipulation; data pipelines and control prototyping.</p>
+        <a class="mt-3 inline-block text-blue-600 dark:text-blue-400 hover:underline" href="/projects/robotics-sensing.html">Read more</a>
+      </article>
+    </div>
   </main>
 
   <div id="site-footer"></div>
@@ -160,4 +200,3 @@
   </script>
 </body>
 </html>
-

@@ -1,19 +1,99 @@
 <!doctype html>
-<html lang="en" class="dark">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="color-scheme" content="dark light" />
   <title>KB2040 Macropad (TinyUSB HID) — Joshua Lobe</title>
   <meta name="description" content="Custom firmware with multi-layer mapping, OLED UI, and USB HID using Adafruit TinyUSB." />
   <meta property="og:title" content="KB2040 Macropad (TinyUSB HID)" />
   <meta property="og:description" content="Custom firmware with multi-layer mapping, OLED UI, and USB HID using Adafruit TinyUSB." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://joshualobe.com/projects/kb2040-macropad.html" />
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Tailwind Play CDN config before load with safelist
+    tailwind = { config: {
+      darkMode: 'media',
+      safelist: [
+        'sticky','top-0','z-50','backdrop-blur',
+        'bg-white/70','dark:bg-zinc-950/70','border-b','border-zinc-200/60','dark:border-zinc-800/60',
+        'font-semibold','tracking-tight',
+        'flex','items-center','gap-4','text-sm',
+        'hover:opacity-80',
+        'rounded-xl','px-3','py-1','bg-zinc-100','dark:bg-zinc-900',
+        'mt-20','border-t','text-zinc-500','max-w-6xl','py-10','px-6','mx-auto',
+        'dark:bg-zinc-950','dark:bg-zinc-900','dark:text-zinc-100','dark:text-zinc-300','dark:text-blue-400',
+        'dark:border-zinc-800','dark:border-zinc-800/60','dark:hover:bg-zinc-900',
+        'dark:bg-zinc-950/70','dark:bg-zinc-900/70','dark:from-zinc-900','dark:to-zinc-800','dark:prose-invert'
+      ]
+    }};
+  </script>
+  <script src="https://cdn.tailwindcss.com?plugins=typography&v=3.4.0"></script>
+  <script>
+    // Apply saved theme preference before paint (robust: read item or property)
+    (function() {
+      try {
+        var stored = (localStorage.getItem && localStorage.getItem('theme')) || localStorage.theme;
+        var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (stored === 'dark' || (!stored && prefersDark)) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
   <style>.glow{box-shadow:0 0 0 1px rgba(255,255,255,.06),0 10px 30px rgba(0,0,0,.2)}</style>
+  <style>
+    .scroll-shape { position: fixed; top: 0; right: 0; height: 100vh; width: clamp(220px, 28vw, 420px); pointer-events: none; opacity: 0.2; z-index: 0; }
+    .scroll-shape svg { width: 100%; height: 100%; display: block; }
+    .scroll-shape-left { position: fixed; top: 0; left: 0; height: 100vh; width: clamp(220px, 28vw, 420px); pointer-events: none; opacity: 0.2; z-index: 0; }
+    .scroll-shape-left svg { width: 100%; height: 100%; display: block; }
+    :root { --shape-a: #294686; --shape-b: #22c55e; }
+    html.dark { --shape-a: #294686; --shape-b: #34d399; }
+    body > *:not(#site-header):not(.scroll-shape):not(.scroll-shape-left) { position: relative; z-index: 1; }
+    html:not(.dark) .scroll-shape, html:not(.dark) .scroll-shape-left { z-index: -1; opacity: 0.15; }
+  </style>
+  <style>
+    html.dark body { background-color: #0b0b0f !important; color: #e4e4e7 !important; }
+    html.dark .dark\:bg-zinc-950 { background-color: #09090b !important; }
+    html.dark .dark\:bg-zinc-900 { background-color: #18181b !important; }
+    html.dark .dark\:text-zinc-100 { color: #f4f4f5 !important; }
+    html.dark .dark\:text-zinc-300 { color: #d4d4d8 !important; }
+    html.dark .dark\:text-blue-400 { color: #60a5fa !important; }
+    html.dark .dark\:border-zinc-800 { border-color: #27272a !important; }
+    html.dark .dark\:border-zinc-800\/60 { border-color: rgba(39,39,42,0.6) !important; }
+  </style>
 </head>
 <body class="bg-white text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100 antialiased">
   <div id="site-header"></div>
+
+  <div class="scroll-shape" aria-hidden="true">
+    <svg id="netSvg" viewBox="0 0 400 800" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="var(--shape-a)"/>
+          <stop offset="100%" stop-color="var(--shape-b)"/>
+        </linearGradient>
+        <filter id="blur6"><feGaussianBlur stdDeviation="6"/></filter>
+      </defs>
+      <g id="links" stroke="url(#grad)" stroke-width="1.2" stroke-linecap="round" opacity="0.55"></g>
+      <g id="nodes" fill="url(#grad)" filter="url(#blur6)"></g>
+    </svg>
+  </div>
+  <div class="scroll-shape-left" aria-hidden="true">
+    <svg id="netSvgLeft" viewBox="0 0 400 800" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="gradL" x1="100%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="var(--shape-b)"/>
+          <stop offset="100%" stop-color="var(--shape-a)"/>
+        </linearGradient>
+        <filter id="blur6L"><feGaussianBlur stdDeviation="6"/></filter>
+      </defs>
+      <g id="linksL" stroke="url(#gradL)" stroke-width="1.2" stroke-linecap="round" opacity="0.55"></g>
+      <g id="nodesL" fill="url(#gradL)" filter="url(#blur6L)"></g>
+    </svg>
+  </div>
 
   <main class="mx-auto max-w-3xl px-6 py-10 md:py-16">
     <a href="/" class="text-sm text-blue-600 dark:text-blue-400 hover:underline">← Back to Home</a>
@@ -47,5 +127,77 @@
 
   <div id="site-footer"></div>
   <script src="/assets/js/includes.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      function buildNetwork(svgId, nodesId, linksId, opts) {
+        const svg = document.getElementById(svgId);
+        const nodeLayer = document.getElementById(nodesId);
+        const linkLayer = document.getElementById(linksId);
+        if (!svg || !nodeLayer || !linkLayer) return null;
+        const width = 400, height = 800, cols = opts.cols, rows = opts.rows;
+        const nodes = [], links = [];
+        for (let y = 0; y < rows; y++) {
+          for (let x = 0; x < cols; x++) {
+            const baseX = opts.side === 'right' ? 240 : 10;
+            const px = baseX + (x/(cols-1))*150;
+            const py = (y/(rows-1))*height;
+            nodes.push({ x:px, y:py, r: 1.6 + Math.random()*1.6, jitterX: Math.random()*12, jitterY: Math.random()*18 });
+          }
+        }
+        const idx = (x,y)=>y*cols + x;
+        for (let y = 0; y < rows; y++) {
+          for (let x = 0; x < cols; x++) {
+            if (x < cols-1) links.push([ idx(x,y), idx(x+1,y) ]);
+            if (y < rows-1) links.push([ idx(x,y), idx(x,y+1) ]);
+            if (x < cols-1 && y < rows-1) links.push([ idx(x,y), idx(x+1,y+1) ]);
+          }
+        }
+        const nodeEls = nodes.map(n => {
+          const c = document.createElementNS('http://www.w3.org/2000/svg','circle');
+          c.setAttribute('cx', n.x); c.setAttribute('cy', n.y); c.setAttribute('r', n.r);
+          nodeLayer.appendChild(c); return c;
+        });
+        const linkEls = links.map(([a,b]) => {
+          const l = document.createElementNS('http://www.w3.org/2000/svg','line');
+          const na = nodes[a], nb = nodes[b];
+          l.setAttribute('x1', na.x); l.setAttribute('y1', na.y);
+          l.setAttribute('x2', nb.x); l.setAttribute('y2', nb.y);
+          linkLayer.appendChild(l); return l;
+        });
+        return { cols, nodes, links, nodeEls, linkEls };
+      }
+      const right = buildNetwork('netSvg','nodes','links',{ side:'right', cols:6, rows:16 });
+      const left  = buildNetwork('netSvgLeft','nodesL','linksL',{ side:'left', cols:5, rows:14 });
+      if (!right || !left) return;
+      const clamp = (v,min,max)=>Math.max(min,Math.min(max,v));
+      const update = () => {
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        const p = max>0 ? window.scrollY / max : 0;
+        const t = 0.5 - 0.5*Math.cos(Math.max(0, Math.min(1, p))*Math.PI);
+        const sway = Math.sin(window.scrollY*0.003) * 8;
+        [right,left].forEach((net,idx) => {
+          const swayDir = idx===0 ? 1 : -1;
+          net.nodes.forEach((n,i) => {
+            const phase = (i%net.cols)/net.cols;
+            const dx = (n.jitterX * t) * Math.sin(phase*Math.PI*2 + p*3.14) + sway*swayDir;
+            const dy = (n.jitterY * t) * Math.cos(phase*Math.PI*2 + p*3.14*0.7);
+            const x = n.x + dx, y = n.y + dy;
+            net.nodeEls[i].setAttribute('cx', x);
+            net.nodeEls[i].setAttribute('cy', y);
+          });
+          net.links.forEach(([a,b],i) => {
+            const na = net.nodeEls[a], nb = net.nodeEls[b];
+            net.linkEls[i].setAttribute('x1', na.getAttribute('cx'));
+            net.linkEls[i].setAttribute('y1', na.getAttribute('cy'));
+            net.linkEls[i].setAttribute('x2', nb.getAttribute('cx'));
+            net.linkEls[i].setAttribute('y2', nb.getAttribute('cy'));
+          });
+        });
+      };
+      update();
+      document.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update);
+    });
+  </script>
 </body>
 </html>
