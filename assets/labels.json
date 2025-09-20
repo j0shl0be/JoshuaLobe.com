@@ -1,0 +1,47 @@
+{
+  "site": [
+    "C/C++ • Rust",
+    "Python • FastAPI",
+    "SQL • Google Cloud",
+    "ROS • TinyUSB • HID",
+    "ESP32 • RP2040 • FPGAs",
+    "Simulink • Controls"
+  ],
+  "mycrofleet": [
+    "ESP32 • IoT",
+    "Firmware • FreeRTOS",
+    "FastAPI • Ingest",
+    "Mechanical Design"
+  ],
+  "kb2040": [
+    "RP2040 • Altium",
+    "USB HID • TinyUSB",
+    "OLED UI",
+    "Layered Keymap"
+  ],
+  "robotics": [
+    "Sensing • F/T",
+    "Data Pipelines",
+    "Control Prototyping",
+    "Simulink"
+  ],
+  "measurement": [
+    "Automation",
+    "Sensing",
+    "Data Collection",
+    "Controls"
+  ],
+  "geotab": [
+    "Internship",
+    "Embedded",
+    "Tooling",
+    "Docs"
+  ],
+  "sonos": [
+    "Embedded",
+    "HID/Input",
+    "UX",
+    "Automation"
+  ]
+}
+

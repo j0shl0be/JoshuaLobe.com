@@ -20,6 +20,47 @@ document.addEventListener("DOMContentLoaded", async () => {
   await inject("#site-header", "/assets/header.html");
   await inject("#site-footer", "/assets/footer.html");
 
+  // Generic partial includes: <div data-include="/path/to/file.html"></div>
+  try {
+    const includeNodes = Array.prototype.slice.call(document.querySelectorAll('[data-include]'));
+    await Promise.all(includeNodes.map(async (node) => {
+      const url = node.getAttribute('data-include');
+      if (!url) return;
+      try {
+        const res = await fetch(url, { cache: 'no-store' });
+        node.innerHTML = await res.text();
+      } catch (e) { console.error('Include failed:', url, e); }
+    }));
+  } catch (e) { console.error(e); }
+
+  // Labels renderer: <div data-labels-for="key"></div> pulls from /assets/labels.json
+  try {
+    const labelTargets = Array.prototype.slice.call(document.querySelectorAll('[data-labels-for]'));
+    if (labelTargets.length) {
+      let labelsData = null;
+      try {
+        const res = await fetch('/assets/labels.json', { cache: 'no-store' });
+        labelsData = await res.json();
+      } catch (e) { console.error('labels.json load failed', e); }
+      if (labelsData) {
+        labelTargets.forEach((el) => {
+          const key = el.getAttribute('data-labels-for');
+          const values = labelsData[key] || labelsData['site'] || [];
+          const ul = document.createElement('ul');
+          ul.className = 'mt-6 flex flex-wrap gap-3 text-sm text-zinc-500 dark:text-zinc-400';
+          values.forEach((t) => {
+            const li = document.createElement('li');
+            li.className = 'rounded-full border border-zinc-300 dark:border-zinc-700 px-3 py-1';
+            li.textContent = t;
+            ul.appendChild(li);
+          });
+          el.innerHTML = '';
+          el.appendChild(ul);
+        });
+      }
+    }
+  } catch (e) { console.error('labels render failed', e); }
+
   // Bind theme toggle
   const updateToggleIcon = () => {
     const btn = document.getElementById('themeToggle');

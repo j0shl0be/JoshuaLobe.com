@@ -18,12 +18,12 @@
       safelist: [
         'sticky','top-0','z-50','backdrop-blur',
         'bg-white/70','dark:bg-zinc-950/70','border-b','border-zinc-200/60','dark:border-zinc-800/60',
-        'font-semibold','tracking-tight','flex','items-center','gap-4','text-sm','hover:opacity-80',
-        'rounded-xl','px-3','py-1','bg-zinc-100','dark:bg-zinc-900',
-        'mt-20','border-t','text-zinc-500','max-w-6xl','py-10','px-6','mx-auto',
+        'font-semibold','tracking-tight','flex','flex-wrap','items-center','gap-4','gap-3','text-sm','hover:opacity-80',
+        'rounded-xl','rounded-full','px-3','py-1','bg-zinc-100','dark:bg-zinc-900',
+        'mt-6','mt-20','border','border-t','border-zinc-300','dark:border-zinc-700','text-zinc-500','max-w-6xl','py-10','px-6','mx-auto',
         // classes used across header/content injected after load
         'dark:bg-zinc-950','dark:bg-zinc-900','dark:text-zinc-100','dark:text-zinc-300','dark:text-blue-400',
-        'dark:border-zinc-800','dark:border-zinc-800/60','dark:hover:bg-zinc-900',
+        'dark:border-zinc-800','dark:border-zinc-800/60','dark:hover:bg-zinc-900','dark:text-zinc-400',
         'dark:bg-zinc-950/70','dark:bg-zinc-900/70','dark:from-zinc-900','dark:to-zinc-800','dark:prose-invert'
       ]
     }};
@@ -69,7 +69,7 @@
             const baseX = opts.side === 'right' ? 240 : 10;
             const px = baseX + (x/(cols-1))*150;
             const py = (y/(rows-1))*height;
-            nodes.push({ x:px, y:py, r: 1.6 + Math.random()*1.6, jitterX: Math.random()*12, jitterY: Math.random()*18 });
+            nodes.push({ x:px, y:py, r: 1.6 + Math.random()*1.6, jitterX: Math.random()*12, jitterY: Math.random()*18, phaseOffset: Math.random()*Math.PI*2 });
           }
         }
         const idx = (x,y)=>y*cols + x;
@@ -103,14 +103,17 @@
       const update = () => {
         const max = document.documentElement.scrollHeight - window.innerHeight;
         const p = max>0 ? window.scrollY / max : 0;
-        const t = 0.5 - 0.5*Math.cos(clamp(p,0,1)*Math.PI);
+        const baseT = 0.6;
+        const t = baseT + (1 - baseT) * (0.5 - 0.5*Math.cos(clamp(p,0,1)*Math.PI));
         const sway = Math.sin(window.scrollY*0.003) * 8;
         [right,left].forEach((net,idx) => {
           const swayDir = idx===0 ? 1 : -1;
           net.nodes.forEach((n,i) => {
-            const phase = (i%net.cols)/net.cols;
-            const dx = (n.jitterX * t) * Math.sin(phase*Math.PI*2 + p*3.14) + sway*swayDir;
-            const dy = (n.jitterY * t) * Math.cos(phase*Math.PI*2 + p*3.14*0.7);
+            const phaseNorm = (i%net.cols)/net.cols;
+            const angleX = phaseNorm*Math.PI*2 + n.phaseOffset + p*3.14;
+            const angleY = phaseNorm*Math.PI*2 + n.phaseOffset + p*3.14*0.7;
+            const dx = (n.jitterX * t) * Math.sin(angleX) + sway*swayDir;
+            const dy = (n.jitterY * t) * Math.cos(angleY);
             const x = n.x + dx, y = n.y + dy;
             net.nodeEls[i].setAttribute('cx', x);
             net.nodeEls[i].setAttribute('cy', y);
@@ -169,18 +172,14 @@
           Mechatronics, Embedded Systems, <span class="text-blue-600 dark:text-blue-400">and Automation</span>
         </h1>
         <p class="mt-5 text-lg text-zinc-600 dark:text-zinc-300">
-          I build reliable firmware and custom mechatronic systems: automated 3D scanning, environment control for vertical farms, and robotics tooling.
+          I build reliable firmware and mechatronic systems: automated 3D scanning, environment control for vertical farms, and robotics tooling.
         </p>
         <div class="mt-8 flex flex-wrap gap-4">
           <a href="/projects/" class="rounded-2xl px-5 py-3 bg-blue-600 text-white hover:bg-blue-700 transition glow">See Projects</a>
           <a id="resumeDownload" href="/Joshua-Lobe-Resume.pdf" download="Joshua-Lobe-Resume.pdf" class="rounded-2xl px-5 py-3 border border-zinc-300 dark:border-zinc-700 hover:bg-zinc-50 dark:hover:bg-zinc-900 transition">Download Resume</a>
+          <a href="#contact" class="rounded-2xl px-5 py-3 border border-zinc-300 dark:border-zinc-700 hover:bg-zinc-50 dark:hover:bg-zinc-900 transition">Contact</a>
         </div>
-        <ul class="mt-6 flex flex-wrap gap-3 text-sm text-zinc-500 dark:text-zinc-400">
-          <li class="rounded-full border border-zinc-300 dark:border-zinc-700 px-3 py-1">C/C++ • RTOS</li>
-          <li class="rounded-full border border-zinc-300 dark:border-zinc-700 px-3 py-1">Arduino • TinyUSB • HID</li>
-          <li class="rounded-full border border-zinc-300 dark:border-zinc-700 px-3 py-1">ESP32 • RP2040 • FPGAs</li>
-          <li class="rounded-full border border-zinc-300 dark:border-zinc-700 px-3 py-1">Simulink • Controls</li>
-        </ul>
+        <div data-labels-for="site"></div>
       </div>
       <div class="relative">
         <div class="aspect-[4/3] rounded-3xl glow overflow-hidden bg-gradient-to-br from-zinc-100 to-zinc-200 dark:from-zinc-900 dark:to-zinc-800 flex items-center justify-center">
@@ -206,6 +205,7 @@
         <div class="aspect-video rounded-2xl bg-zinc-100 dark:bg-zinc-900"></div>
         <h3 class="mt-4 text-xl font-semibold">MycroFleet Sensor Network</h3>
         <p class="mt-2 text-zinc-600 dark:text-zinc-300">Low-cost distributed sensors for smallholder farms; embedded firmware + backend APIs.</p>
+        <div data-labels-for="mycrofleet"></div>
         <a class="mt-3 inline-block text-blue-600 dark:text-blue-400 hover:underline" href="/projects/MycroFleet.html">Read more</a>
       </article>
 
@@ -214,6 +214,7 @@
         <div class="aspect-video rounded-2xl bg-zinc-100 dark:bg-zinc-900"></div>
         <h3 class="mt-4 text-xl font-semibold">KB2040 Macropad (TinyUSB HID)</h3>
         <p class="mt-2 text-zinc-600 dark:text-zinc-300">Custom firmware with multi-layer mapping, OLED UI, and USB HID using Adafruit TinyUSB.</p>
+        <div data-labels-for="kb2040"></div>
         <a class="mt-3 inline-block text-blue-600 dark:text-blue-400 hover:underline" href="/projects/kb2040-macropad.html">Read more</a>
       </article>
 
@@ -222,6 +223,7 @@
         <div class="aspect-video rounded-2xl bg-zinc-100 dark:bg-zinc-900"></div>
         <h3 class="mt-4 text-xl font-semibold">Robotics Sensing Experiments</h3>
         <p class="mt-2 text-zinc-600 dark:text-zinc-300">Force/torque sensing setups for manipulation; data pipelines and control prototyping.</p>
+        <div data-labels-for="robotics"></div>
         <a class="mt-3 inline-block text-blue-600 dark:text-blue-400 hover:underline" href="/projects/robotics-sensing.html">Read more</a>
       </article>
     </div>
@@ -300,7 +302,7 @@
   </section>
 
   <div id="site-footer"></div>
-  <script src="/assets/js/includes.js"></script>
+  <script src="/assets/js/includes.js?v=2"></script>
   <script>
     // Force-download the resume PDF even if the browser prefers to preview it
     document.addEventListener('click', async (e) => {

@@ -7,7 +7,21 @@
   <title>Sonos Controller — Joshua Lobe</title>
   <meta name="description" content="Custom Sonos controller project details." />
   <script>
-    tailwind = { config: { darkMode: 'media' } };
+    tailwind = { config: {
+      darkMode: 'media',
+      safelist: [
+        'sticky','top-0','z-50','backdrop-blur',
+        'bg-white/70','dark:bg-zinc-950/70','border-b','border-zinc-200/60','dark:border-zinc-800/60',
+        'font-semibold','tracking-tight',
+        'flex','flex-wrap','items-center','gap-4','gap-3','text-sm',
+        'hover:opacity-80',
+        'rounded-xl','rounded-full','px-3','py-1','bg-zinc-100','dark:bg-zinc-900',
+        'mt-6','mt-20','border','border-t','text-zinc-500','max-w-6xl','py-10','px-6','mx-auto','border-zinc-300','dark:border-zinc-700',
+        'dark:bg-zinc-950','dark:bg-zinc-900','dark:text-zinc-100','dark:text-zinc-300','dark:text-blue-400','dark:text-zinc-400',
+        'dark:border-zinc-800','dark:border-zinc-800/60','dark:hover:bg-zinc-900',
+        'dark:bg-zinc-950/70','dark:bg-zinc-900/70','dark:from-zinc-900','dark:to-zinc-800','dark:prose-invert'
+      ]
+    } };
   </script>
   <script src="https://cdn.tailwindcss.com?v=3.4.0"></script>
   <script>
@@ -79,13 +93,14 @@
   <main class="mx-auto max-w-3xl px-6 py-10 md:py-16">
     <a href="/projects/" class="text-sm text-blue-600 dark:text-blue-400 hover:underline">← All Projects</a>
     <h1 class="mt-4 text-3xl md:text-4xl font-extrabold tracking-tight">Sonos Controller</h1>
+    <div data-labels-for="sonos"></div>
     <section class="mt-6 rounded-3xl glow p-6 bg-white dark:bg-zinc-950">
       <p class="text-zinc-700 dark:text-zinc-300">Coming soon.</p>
     </section>
   </main>
 
   <div id="site-footer"></div>
-  <script src="/assets/js/includes.js"></script>
+  <script src="/assets/js/includes.js?v=2"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       function buildNetwork(svgId, nodesId, linksId, opts) {
