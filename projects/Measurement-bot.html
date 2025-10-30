@@ -94,13 +94,32 @@
     <a href="/projects/" class="text-sm text-blue-600 dark:text-blue-400 hover:underline">← All Projects</a>
     <h1 class="mt-4 text-3xl md:text-4xl font-extrabold tracking-tight">Measurement Bot</h1>
     <div data-labels-for="measurement"></div>
-    <section class="mt-6 rounded-3xl glow p-6 bg-white dark:bg-zinc-950">
-      <p class="text-zinc-700 dark:text-zinc-300">Notes and images TBD.</p>
+    <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+      <figure class="rounded-3xl overflow-hidden glow bg-zinc-100 dark:bg-zinc-900">
+        <img src="/assets/Images/measurement/IMG_0440.jpg" alt="Measurement bot setup" class="w-full h-full object-cover" loading="lazy" />
+      </figure>
+      <figure class="rounded-3xl overflow-hidden glow bg-zinc-100 dark:bg-zinc-900">
+        <img src="/assets/Images/measurement/IMG_1705.jpg" alt="Measurement bot component detail" class="w-full h-full object-cover" loading="lazy" />
+      </figure>
+    </div>
+
+    <section class="mt-8 prose prose-zinc dark:prose-invert max-w-none">
+      <h2>Overview</h2>
+      <p>[ Briefly describe the task, sensors/actuators, and goals. ]</p>
+
+      <h2>Mechanics</h2>
+      <p>[ Summarize motion system, transmission, and end-effector. ]</p>
+
+      <h2>Control & software</h2>
+      <p>[ Outline control loop, calibration, data capture, and processing. ]</p>
+
+      <h2>Results</h2>
+      <p>[ Add key results, charts, and learnings. ]</p>
     </section>
   </main>
 
   <div id="site-footer"></div>
-  <script src="/assets/js/includes.js?v=2"></script>
+  <script src="/assets/js/includes.js?v=3"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       function buildNetwork(svgId, nodesId, linksId, opts) {

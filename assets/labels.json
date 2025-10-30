@@ -4,20 +4,20 @@
     "Python • FastAPI",
     "SQL • Google Cloud",
     "ROS • TinyUSB • HID",
-    "ESP32 • RP2040 • FPGAs",
+    "ESP32 • STM32 • FPGAs",
     "Simulink • Controls"
   ],
   "mycrofleet": [
     "ESP32 • IoT",
     "Firmware • FreeRTOS",
     "FastAPI • Ingest",
-    "Mechanical Design"
+    "Mechanical Design • OnShape"
   ],
   "kb2040": [
-    "RP2040 • Altium",
+    "RP2040 • Altium . Multi-layer",
     "USB HID • TinyUSB",
     "OLED UI",
-    "Layered Keymap"
+    "OnShape"
   ],
   "robotics": [
     "Sensing • F/T",
@@ -33,15 +33,36 @@
   ],
   "geotab": [
     "Internship",
-    "Embedded",
-    "Tooling",
-    "Docs"
+    "AI-driven",
+    "Google Cloud",
+    "Data Accessability"
   ],
   "sonos": [
     "Embedded",
-    "HID/Input",
-    "UX",
+    "Altium • Wireless",
+    "IoT • Automation",
     "Automation"
+  ]
+  ,
+  "kuka": [
+    "KUKA • Robotics",
+    "Motion Control",
+    "Sensing • Tooling",
+    "Simulink"
+  ]
+  ,
+  "lovethewine": [
+    "LEDs",
+    "Fabrication",
+    "Enclosure",
+    "Power"
+  ]
+  ,
+  "hotdog": [
+    "Robotics",
+    "Automation",
+    "Food handling",
+    "Controls"
   ]
 }
 

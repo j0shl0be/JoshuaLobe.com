@@ -94,13 +94,24 @@
     <a href="/projects/" class="text-sm text-blue-600 dark:text-blue-400 hover:underline">← All Projects</a>
     <h1 class="mt-4 text-3xl md:text-4xl font-extrabold tracking-tight">Sonos Controller</h1>
     <div data-labels-for="sonos"></div>
-    <section class="mt-6 rounded-3xl glow p-6 bg-white dark:bg-zinc-950">
-      <p class="text-zinc-700 dark:text-zinc-300">Coming soon.</p>
+    <figure class="mt-6 rounded-3xl overflow-hidden glow bg-zinc-100 dark:bg-zinc-900">
+      <img src="/assets/Images/Sonos/IMG_5203.jpg" alt="Custom Sonos controller device" class="w-full h-full object-cover" loading="lazy" />
+    </figure>
+
+    <section class="mt-8 prose prose-zinc dark:prose-invert max-w-none">
+      <h2>Overview</h2>
+      <p>[ What the controller does, and why you built it. ]</p>
+
+      <h2>Hardware</h2>
+      <p>[ Brief description of the enclosure, inputs, and connectivity. ]</p>
+
+      <h2>Software</h2>
+      <p>[ Protocols, APIs, and control logic. ]</p>
     </section>
   </main>
 
   <div id="site-footer"></div>
-  <script src="/assets/js/includes.js?v=2"></script>
+  <script src="/assets/js/includes.js?v=3"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       function buildNetwork(svgId, nodesId, linksId, opts) {

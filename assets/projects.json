@@ -1,0 +1,71 @@
+[
+  {
+    "slug": "mycrofleet",
+    "title": "MycroFleet Sensor Network",
+    "description": "Low-cost distributed sensors for smallholder farms; embedded firmware + backend APIs.",
+    "url": "/projects/mycrofleet.html",
+    "image": "/assets/Images/mycrofleet/IMG_4290.webp",
+    "labels": "mycrofleet"
+  },
+  {
+    "slug": "kb2040-macropad",
+    "title": "KB2040 Macropad (TinyUSB HID)",
+    "description": "Custom firmware with multi-layer mapping, OLED UI, and USB HID.",
+    "url": "/projects/kb2040-macropad.html",
+    "image": "/assets/Images/kb2040/PXL_20250921_183319110.PORTRAIT.jpg",
+    "labels": "kb2040"
+  },
+  {
+    "slug": "robotics-sensing",
+    "title": "Robotics Sensing Experiments",
+    "description": "Force/torque sensing setups for manipulation; data pipelines and control prototyping.",
+    "url": "/projects/robotics-sensing.html",
+    "image": "/assets/Images/robotics/IMG_4388.jpg",
+    "labels": "robotics"
+  },
+  {
+    "slug": "measurement-bot",
+    "title": "Measurement Bot",
+    "description": "Automation and measurement bot notes and highlights.",
+    "url": "/projects/Measurement-bot.html",
+    "image": "/assets/Images/measurement/IMG_1708.jpg",
+    "labels": "measurement"
+  },
+  {
+    "slug": "sonos-controller",
+    "title": "Sonos Controller",
+    "description": "Custom Sonos controller project details.",
+    "url": "/projects/Sonos-Controller.html",
+    "image": "/assets/Images/sonos/IMG_5203.jpg",
+    "labels": "sonos"
+  }
+  ,
+  {
+    "slug": "kuka",
+    "title": "KUKA Manipulator",
+    "description": "Experiments with a KUKA arm: sensing, control, and tooling.",
+    "url": "/projects/kuka.html",
+    "image": "/assets/Images/kuka/IMG_2583.jpg",
+    "labels": "kuka"
+  }
+  ,
+  {
+    "slug": "lovethewine",
+    "title": "“Love The Wine You’re With” Sign",
+    "description": "Custom LED sign build: design, fabrication, and control.",
+    "url": "/projects/lovethewine.html",
+    "image": "/assets/Images/lovethewine/IMG_4439.webp",
+    "labels": "lovethewine"
+  }
+  ,
+  {
+    "slug": "hotdog-robot",
+    "title": "Hotdog Robot",
+    "description": "Automated hotdog prep robot: sensing, actuation, and control.",
+    "url": "/projects/hotdog-robot.html",
+    "image": "/assets/Images/hotdog/hero.webp",
+    "labels": "hotdog"
+  }
+]
+
+

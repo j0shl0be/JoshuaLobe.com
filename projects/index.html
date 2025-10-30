@@ -100,36 +100,11 @@
       <a href="/" class="text-sm hover:opacity-80">← Back to Home</a>
     </div>
 
-    <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      <article class="rounded-3xl glow p-5 bg-white dark:bg-zinc-950">
-        <div class="aspect-video rounded-2xl bg-zinc-100 dark:bg-zinc-900"></div>
-        <h3 class="mt-4 text-xl font-semibold">MycroFleet Sensor Network</h3>
-        <p class="mt-2 text-zinc-600 dark:text-zinc-300">Low-cost distributed sensors for smallholder farms; embedded firmware + backend APIs.</p>
-        <div data-labels-for="mycrofleet"></div>
-        <a class="mt-3 inline-block text-blue-600 dark:text-blue-400 hover:underline" href="/projects/MycroFleet.html">Read more</a>
-      </article>
-
-      <article class="rounded-3xl glow p-5 bg-white dark:bg-zinc-950">
-        <div class="aspect-video rounded-2xl bg-zinc-100 dark:bg-zinc-900"></div>
-        <h3 class="mt-4 text-xl font-semibold">KB2040 Macropad (TinyUSB HID)</h3>
-        <p class="mt-2 text-zinc-600 dark:text-zinc-300">Custom firmware with multi-layer mapping, OLED UI, and USB HID.</p>
-        <div data-labels-for="kb2040"></div>
-        <a class="mt-3 inline-block text-blue-600 dark:text-blue-400 hover:underline" href="/projects/kb2040-macropad.html">Read more</a>
-      </article>
-
-      <!-- Placeholder cards for future projects; add as needed -->
-      <article class="rounded-3xl glow p-5 bg-white dark:bg-zinc-950">
-        <div class="aspect-video rounded-2xl bg-zinc-100 dark:bg-zinc-900"></div>
-        <h3 class="mt-4 text-xl font-semibold">Robotics Sensing Experiments</h3>
-        <p class="mt-2 text-zinc-600 dark:text-zinc-300">Force/torque sensing setups for manipulation; data pipelines and control prototyping.</p>
-        <div data-labels-for="robotics"></div>
-        <a class="mt-3 inline-block text-blue-600 dark:text-blue-400 hover:underline" href="/projects/robotics-sensing.html">Read more</a>
-      </article>
-    </div>
+    <div data-projects-grid></div>
   </main>
 
   <div id="site-footer"></div>
-  <script src="/assets/js/includes.js?v=2"></script>
+  <script src="/assets/js/includes.js?v=3"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       function buildNetwork(svgId, nodesId, linksId, opts) {
