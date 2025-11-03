@@ -4,10 +4,10 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="color-scheme" content="dark light" />
-  <title>KUKA Manipulator — Joshua Lobe</title>
-  <meta name="description" content="Experiments with a KUKA arm: sensing, control, and tooling." />
-  <meta property="og:title" content="KUKA Manipulator" />
-  <meta property="og:description" content="Experiments with a KUKA arm: sensing, control, and tooling." />
+  <title>Automated KUKA Camera Calibration System — Joshua Lobe</title>
+  <meta name="description" content="Automated camera calibration system using KUKA manipulator for stereo imaging with PC-controlled positioning and lens modeling." />
+  <meta property="og:title" content="Automated KUKA Camera Calibration System" />
+  <meta property="og:description" content="Automated camera calibration system using KUKA manipulator for stereo imaging with PC-controlled positioning and lens modeling." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://joshualobe.com/projects/kuka.html" />
   <script>
@@ -83,30 +83,57 @@
 
   <main class="mx-auto max-w-3xl px-6 py-10 md:py-16">
     <a href="/projects/" class="text-sm text-blue-600 dark:text-blue-400 hover:underline">← All Projects</a>
-    <h1 class="mt-4 text-3xl md:text-4xl font-extrabold tracking-tight">KUKA Manipulator</h1>
+    <h1 class="mt-4 text-3xl md:text-4xl font-extrabold tracking-tight">Automated KUKA Camera Calibration System</h1>
     <div data-labels-for="kuka"></div>
-
-    <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
-      <figure class="rounded-3xl overflow-hidden glow bg-zinc-100 dark:bg-zinc-900">
-        <img src="/assets/Images/kuka/IMG_2583.jpg" alt="KUKA arm workspace view" class="w-full h-full object-cover" loading="lazy" />
-      </figure>
-      <figure class="rounded-3xl overflow-hidden glow bg-zinc-100 dark:bg-zinc-900">
-        <img src="/assets/Images/kuka/IMG_2767.jpg" alt="KUKA arm close-up" class="w-full h-full object-cover" loading="lazy" />
-      </figure>
-    </div>
 
     <section class="mt-8 prose prose-zinc dark:prose-invert max-w-none">
       <h2>Overview</h2>
-      <p>[ Brief description of the KUKA setup, goals, and context. ]</p>
+      <p>
+        An automated camera calibration system using a KUKA robotic manipulator to position cameras relative to calibration 
+        targets (image plates) for stereo imaging applications. The system uses PC-based control to command KUKA arm positions, 
+        trigger camera captures, and generate lens distortion models to improve stereo imaging accuracy.
+      </p>
 
-      <h2>Tooling & sensing</h2>
-      <p>[ Summarize end-effector, sensing stack, and safety. ]</p>
+      <h2>System Architecture</h2>
+      <ul>
+        <li><strong>PC Control Software:</strong> Manages KUKA arm positioning, camera triggering, and data collection</li>
+        <li><strong>KUKA Manipulator:</strong> Precisely positions cameras at programmed poses relative to calibration targets</li>
+        <li><strong>Stereo Camera System:</strong> Dual cameras for capturing calibration images from multiple viewpoints</li>
+        <li><strong>Calibration Targets:</strong> Image plates with known patterns for camera calibration</li>
+        <li><strong>Lighting System:</strong> Dual-spectrum illumination (visible and IR) for image plates</li>
+      </ul>
 
-      <h2>Control</h2>
-      <p>[ Outline motion planning, control strategy, and communication. ]</p>
+      <h2>Calibration Process</h2>
+      <p>
+        The PC software commands the KUKA arm to move through a series of predetermined poses, positioning the cameras at 
+        different angles and distances relative to the calibration plates. At each position, the system triggers the cameras 
+        to capture images. The dual-spectrum lighting (visible and IR) ensures optimal image quality for pattern detection 
+        across different imaging conditions.
+      </p>
+      <p>
+        The captured images are processed to extract calibration features, and a lens distortion model is generated for each 
+        camera. These models correct for optical aberrations and improve the accuracy of stereo imaging calculations, enabling 
+        precise depth estimation and 3D reconstruction.
+      </p>
+
+      <h2>Features</h2>
+      <ul>
+        <li>Automated pose sequence execution via PC control</li>
+        <li>Synchronized camera triggering for stereo image capture</li>
+        <li>Lens distortion modeling for improved stereo imaging accuracy</li>
+        <li>Dual-spectrum lighting (visible and IR) for robust pattern detection</li>
+        <li>Precise robotic positioning for repeatable calibration data</li>
+      </ul>
 
       <h2>Gallery</h2>
-      <p>[ Add additional photos, videos, or diagrams. ]</p>
+      <div class="not-prose mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <figure class="rounded-3xl overflow-hidden glow bg-zinc-100 dark:bg-zinc-900">
+          <img src="/assets/Images/kuka/IMG_2583.jpg" alt="KUKA camera calibration system" class="w-full h-full object-cover" loading="lazy" />
+        </figure>
+        <figure class="rounded-3xl overflow-hidden glow bg-zinc-100 dark:bg-zinc-900">
+          <img src="/assets/Images/kuka/IMG_2767.jpg" alt="KUKA system close-up" class="w-full h-full object-cover" loading="lazy" />
+        </figure>
+      </div>
     </section>
   </main>
 

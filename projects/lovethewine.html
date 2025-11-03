@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="color-scheme" content="dark light" />
   <title>“Love The Wine You’re With” Sign — Joshua Lobe</title>
-  <meta name="description" content="Custom LED sign build: design, fabrication, and control." />
-  <meta property="og:title" content="“Love The Wine You’re With” Sign" />
-  <meta property="og:description" content="Custom LED sign build: design, fabrication, and control." />
+  <meta name="description" content="Custom LED lamp built from a wine sign, featuring Arduino Nano control, addressable white LEDs, and brightness/white balance adjustment." />
+  <meta property="og:title" content=""Love The Wine You're With" Sign" />
+  <meta property="og:description" content="Custom LED lamp built from a wine sign, featuring Arduino Nano control, addressable white LEDs, and brightness/white balance adjustment." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://joshualobe.com/projects/lovethewine.html" />
   <script>
@@ -61,25 +61,52 @@
 
   <main class="mx-auto max-w-3xl px-6 py-10 md:py-16">
     <a href="/projects/" class="text-sm text-blue-600 dark:text-blue-400 hover:underline">← All Projects</a>
-    <h1 class="mt-4 text-3xl md:text-4xl font-extrabold tracking-tight">“Love The Wine You’re With” Sign</h1>
+    <h1 class="mt-4 text-3xl md:text-4xl font-extrabold tracking-tight">"Love The Wine You're With" Sign</h1>
     <div data-labels-for="lovethewine"></div>
-
-    <figure class="mt-6 rounded-3xl overflow-hidden glow bg-zinc-100 dark:bg-zinc-900">
-      <img src="/assets/Images/lovethewine/IMG_5231.jpg" alt="Love The Wine You're With sign" class="w-full h-full object-cover" loading="lazy" />
-    </figure>
 
     <section class="mt-8 prose prose-zinc dark:prose-invert max-w-none">
       <h2>Overview</h2>
-      <p>[ Brief description of the sign concept, dimensions, and materials. ]</p>
-
-      <h2>Design & fabrication</h2>
-      <p>[ Outline the design process (CAD, stencil/laser/print), materials, and assembly. ]</p>
+      <p>
+        A custom LED lamp built around a "Love The Wine You're With" sign, designed as a gift for my dad who works in 
+        the wine industry. After seeing the sign, I decided to transform it into a functional lamp with adjustable brightness 
+        and white balance controls.
+      </p>
 
       <h2>Electronics</h2>
-      <p>[ LEDs/driver, wiring, power, and mounting details. ]</p>
+      <ul>
+        <li><strong>Controller:</strong> Knockoff Arduino Nano</li>
+        <li><strong>LEDs:</strong> Addressable white LED strips</li>
+        <li><strong>Power:</strong> USB-C input</li>
+        <li><strong>Control:</strong> Transistors for switching LED segments</li>
+        <li><strong>User Interface:</strong> Two potentiometers for brightness and white balance adjustment</li>
+      </ul>
+      <p>
+        The system uses transistors to switch different segments of the addressable LED strips, allowing for flexible control 
+        of the lighting pattern. The two potentiometers provide intuitive manual control over brightness and white balance, 
+        enabling customization of the lamp's appearance to match the desired ambiance.
+      </p>
+
+      <h2>Features</h2>
+      <ul>
+        <li>Adjustable brightness control via potentiometer</li>
+        <li>White balance adjustment for different color temperatures</li>
+        <li>USB-C power input for modern convenience</li>
+        <li>Addressable LED control for flexible lighting patterns</li>
+        <li>Transistor-based switching for efficient segment control</li>
+      </ul>
 
       <h2>Gallery</h2>
-      <p>[ Add additional photos close-up and in-room shots. ]</p>
+      <div class="not-prose mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <figure class="rounded-3xl overflow-hidden glow bg-zinc-100 dark:bg-zinc-900">
+          <img src="/assets/Images/lovethewine/IMG_5231.jpg" alt="Love The Wine You're With sign" class="w-full h-full object-cover" loading="lazy" />
+        </figure>
+        <figure class="rounded-3xl overflow-hidden glow bg-zinc-100 dark:bg-zinc-900">
+          <img src="/assets/Images/lovethewine/IMG_4439.jpg" alt="Wine sign close-up" class="w-full h-full object-cover" loading="lazy" />
+        </figure>
+        <figure class="rounded-3xl overflow-hidden glow bg-zinc-100 dark:bg-zinc-900">
+          <img src="/assets/Images/lovethewine/IMG_4393.jpg" alt="Wine sign detail" class="w-full h-full object-cover" loading="lazy" />
+        </figure>
+      </div>
     </section>
   </main>
 

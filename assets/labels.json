@@ -20,10 +20,10 @@
     "OnShape"
   ],
   "robotics": [
-    "Sensing • F/T",
-    "Data Pipelines",
-    "Control Prototyping",
-    "Simulink"
+    "Photogrammetry",
+    "3D Scanning",
+    "Motion Control",
+    "Raspberry Pi"
   ],
   "measurement": [
     "Automation",

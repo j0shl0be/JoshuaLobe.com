@@ -17,16 +17,16 @@
   },
   {
     "slug": "robotics-sensing",
-    "title": "Robotics Sensing Experiments",
-    "description": "Force/torque sensing setups for manipulation; data pipelines and control prototyping.",
+    "title": "Automated Mushroom 3D Scanning",
+    "description": "Automated 3-axis gantry system with rotary table for capturing photogrammetry images and generating 3D models.",
     "url": "/projects/robotics-sensing.html",
     "image": "/assets/Images/robotics/IMG_4388.jpg",
     "labels": "robotics"
   },
   {
     "slug": "measurement-bot",
-    "title": "Measurement Bot",
-    "description": "Automation and measurement bot notes and highlights.",
+    "title": "Linear Measurement Device",
+    "description": "MTE-201 class project: automated linear measurement with 0.6mm accuracy using stepper motor and limit switch.",
     "url": "/projects/Measurement-bot.html",
     "image": "/assets/Images/measurement/IMG_1708.jpg",
     "labels": "measurement"
@@ -34,16 +34,16 @@
   {
     "slug": "sonos-controller",
     "title": "Sonos Controller",
-    "description": "Custom Sonos controller project details.",
+    "description": "Battery-powered custom controller for hands-free Sonos speaker control and grouping, with Raspberry Pi server bridge.",
     "url": "/projects/Sonos-Controller.html",
-    "image": "/assets/Images/sonos/IMG_5203.jpg",
+    "image": "/assets/Images/Sonos/IMG_5203.webp",
     "labels": "sonos"
   }
   ,
   {
     "slug": "kuka",
-    "title": "KUKA Manipulator",
-    "description": "Experiments with a KUKA arm: sensing, control, and tooling.",
+    "title": "Automated KUKA Camera Calibration System",
+    "description": "PC-controlled KUKA manipulator system for automated camera calibration with stereo imaging and lens distortion modeling.",
     "url": "/projects/kuka.html",
     "image": "/assets/Images/kuka/IMG_2583.jpg",
     "labels": "kuka"
@@ -63,7 +63,7 @@
     "title": "Hotdog Robot",
     "description": "Automated hotdog prep robot: sensing, actuation, and control.",
     "url": "/projects/hotdog-robot.html",
-    "image": "/assets/Images/hotdog/hero.webp",
+    "image": "/assets/Images/hotdog/IMG_5394.webp",
     "labels": "hotdog"
   }
 ]

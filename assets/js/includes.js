@@ -99,11 +99,11 @@ document.addEventListener("DOMContentLoaded", async () => {
       case 'mycrofleet':
         return '/assets/Images/mycrofleet/IMG_4249.jpg';
       case 'sonos-controller':
-        return '/assets/Images/Sonos/IMG_5203.jpg';
+        return '/assets/Images/Sonos/IMG_5203.webp';
       case 'geotab-intern':
         return '/assets/Images/geotab/card.webp';
       case 'hotdog-robot':
-        return '/assets/Images/hotdog/hero.jpg';
+        return '/assets/Images/hotdog/IMG_5394.jpg';
       default:
         return '';
     }

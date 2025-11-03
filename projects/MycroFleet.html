@@ -116,32 +116,23 @@
     <section class="mt-8 prose prose-zinc dark:prose-invert max-w-none">
       <h2>Overview</h2>
       <p>
-        MycroFleet is an affordable sensor fleet for 1–5 acre farms. It focuses on simple deployment, robust data,
-        and long battery life.
+        7 tent agricultural testing chambers which can individually regulate humidity, temperature, light, and CO2 level. 
+        Meant to be a data collection rig for growing mushrooms.
       </p>
 
       <h2>My role</h2>
       <ul>
-        <li>Firmware (FreeRTOS, low-power, OTA-ready architecture)</li>
-        <li>PCB bring-up & instrumentation</li>
-        <li>FastAPI microservice for data ingest</li>
+        <li>Controller</li>
+        <li>Mechanical design and assembly</li>
+        <li>Electrical design</li>
       </ul>
-
-      <h2>Architecture</h2>
-      <p>ESP32 nodes → Gateway → FastAPI → Timeseries DB (e.g., Influx/Timescale) → Grafana dashboards.</p>
 
       <h2>Highlights</h2>
       <ul>
-        <li>Sub-$25 BOM per node (target)</li>
-        <li>LoRa/2.4 GHz variants</li>
-        <li>Field-safe OTA staging</li>
+        <li>Low cost of construction, $40 per tent net cost</li>
+        <li>Accurate environmental control</li>
+        <li>Scalable architecture</li>
       </ul>
-
-      <h2>Code & links</h2>
-      <p>
-        <a href="#" class="underline">Firmware repo</a> •
-        <a href="#" class="underline">Gateway service</a>
-      </p>
     </section>
   </main>
 

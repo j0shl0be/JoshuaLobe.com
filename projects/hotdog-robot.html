@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="color-scheme" content="dark light" />
   <title>Hotdog Robot — Joshua Lobe</title>
-  <meta name="description" content="Automated hotdog prep robot: sensing, actuation, and control." />
+  <meta name="description" content="First-year LEGO Mindstorms project: automated hotdog-making robot with four subsystems, multithreaded control, and New York personality." />
   <meta property="og:title" content="Hotdog Robot" />
-  <meta property="og:description" content="Automated hotdog prep robot: sensing, actuation, and control." />
+  <meta property="og:description" content="First-year LEGO Mindstorms project: automated hotdog-making robot with four subsystems, multithreaded control, and New York personality." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://joshualobe.com/projects/hotdog-robot.html" />
   <script>
@@ -79,32 +79,76 @@
     <h1 class="mt-4 text-3xl md:text-4xl font-extrabold tracking-tight">Hotdog Robot</h1>
     <div data-labels-for="hotdog"></div>
 
-    <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
-      <figure class="rounded-3xl overflow-hidden glow bg-zinc-100 dark:bg-zinc-900 aspect-video flex items-center justify-center">
-        <span class="text-zinc-400">[ Place photos under /assets/Images/hotdog/, e.g., hero.jpg ]</span>
-      </figure>
-      <figure class="rounded-3xl overflow-hidden glow bg-zinc-100 dark:bg-zinc-900 aspect-video flex items-center justify-center">
-        <span class="text-zinc-400">[ Optional: second image ]</span>
-      </figure>
-    </div>
-
     <section class="mt-8 prose prose-zinc dark:prose-invert max-w-none">
       <h2>Overview</h2>
-      <p>[ Brief description of the robot’s purpose, environment, and constraints. ]</p>
+      <p>
+        A first-year robotics project that was amazing to work on. Our team was tasked with building a robot using LEGO 
+        Mindstorms, and we chose to create an automated hotdog-making machine. The robot was split into four main sections: 
+        buns and motion, sauce dispensing, hotdog placement, and order reader. The machine was also designed to yell at users 
+        like a New York hot dog stand person, adding personality and humor to the project.
+      </p>
 
-      <h2>Mechanics</h2>
-      <p>[ End-effector, grippers/rollers, conveyors, actuators, and frame. ]</p>
+      <h2>System Architecture</h2>
+      <ul>
+        <li><strong>Buns and Motion:</strong> Handled bun placement and overall robot movement</li>
+        <li><strong>Sauce Section:</strong> Dispensed condiments onto the hotdog</li>
+        <li><strong>Dogs Section:</strong> Placed the hotdog into the bun</li>
+        <li><strong>Order Reader:</strong> Read and processed customer orders</li>
+      </ul>
+      <p>
+        To meet the project requirements for concurrent operation of all subsystems, we had to jailbreak the LEGO Mindstorms 
+        platform to enable multithreading. This modification was essential for coordinating the four sections simultaneously 
+        and creating a smooth, automated hotdog-making process.
+      </p>
 
-      <h2>Sensing</h2>
-      <p>[ Vision/encoders/limit switches, food-safe handling considerations. ]</p>
+      <h2>My Role</h2>
+      <p>
+        I worked on two of the four main sections: <strong>buns and motion</strong>, and the <strong>order reader</strong>. 
+        The buns and motion system was responsible for the core mechanical movement of placing buns and coordinating the overall 
+        robot motion. The order reader needed to process and interpret customer orders, feeding that information to the rest 
+        of the system.
+      </p>
 
-      <h2>Control</h2>
-      <p>[ State machine, motion control, safety interlocks, and UI. ]</p>
+      <h2>Technical Challenges</h2>
+      <ul>
+        <li>Jailbreaking LEGO Mindstorms to enable multithreaded operation</li>
+        <li>Coordinating four separate subsystems to work in parallel</li>
+        <li>Implementing voice output for the "New York hot dog stand person" personality</li>
+        <li>Mechanical design for reliable bun and hotdog handling</li>
+        <li>Order processing and integration with the motion systems</li>
+      </ul>
 
       <h2>Gallery</h2>
-      <div class="not-prose mt-2 flex flex-col items-center gap-4">
-        <a href="https://photos.app.goo.gl/dZEavfivZGSTjXtb9" target="_blank" rel="noopener"
-           class="text-blue-600 dark:text-blue-400 hover:underline text-sm">Open in Google Photos (external)</a>
+      <div class="not-prose mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <figure class="rounded-3xl overflow-hidden glow bg-zinc-100 dark:bg-zinc-900">
+          <img src="/assets/Images/hotdog/IMG_5394.jpg" alt="Hotdog robot assembly" class="w-full h-full object-cover" loading="lazy" />
+        </figure>
+        <figure class="rounded-3xl overflow-hidden glow bg-zinc-100 dark:bg-zinc-900">
+          <img src="/assets/Images/hotdog/20221118_164746.jpg" alt="Hotdog robot in action" class="w-full h-full object-cover" loading="lazy" />
+        </figure>
+      </div>
+      <div class="not-prose mt-4">
+        <a href="https://photos.app.goo.gl/dZEavfivZGSTjXtb9" target="_blank" rel="noopener" class="block group">
+          <figure class="rounded-3xl overflow-hidden glow bg-zinc-100 dark:bg-zinc-900 relative" style="aspect-ratio: 9/16;">
+            <img 
+              src="/assets/Images/hotdog/IMG_5394.jpg" 
+              alt="Hotdog robot video thumbnail" 
+              class="w-full h-full object-cover"
+              loading="lazy"
+            />
+            <div class="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors flex items-center justify-center">
+              <div class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white/90 dark:bg-zinc-900/90 backdrop-blur-sm flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                <svg class="w-8 h-8 md:w-10 md:h-10 text-zinc-900 dark:text-zinc-100 ml-1" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+              </div>
+            </div>
+          </figure>
+        </a>
+        <p class="mt-2 text-sm text-zinc-500 dark:text-zinc-400">
+          Video of the hotdog robot in operation • 
+          <a href="https://photos.app.goo.gl/dZEavfivZGSTjXtb9" target="_blank" rel="noopener" class="text-blue-600 dark:text-blue-400 hover:underline">Click to play in Google Photos (opens in new tab, supports picture-in-picture)</a>
+        </p>
       </div>
     </section>
   </main>

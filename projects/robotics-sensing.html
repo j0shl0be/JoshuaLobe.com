@@ -4,10 +4,10 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="color-scheme" content="dark light" />
-  <title>Robotics Sensing Experiments — Joshua Lobe</title>
-  <meta name="description" content="Force/torque sensing setups for manipulation; data pipelines and control prototyping." />
-  <meta property="og:title" content="Robotics Sensing Experiments" />
-  <meta property="og:description" content="Force/torque sensing setups for manipulation; data pipelines and control prototyping." />
+  <title>Automated Mushroom 3D Scanning — Joshua Lobe</title>
+  <meta name="description" content="Automated 3-axis gantry system with rotary table for capturing photogrammetry images of mushrooms and generating 3D models." />
+  <meta property="og:title" content="Automated Mushroom 3D Scanning" />
+  <meta property="og:description" content="Automated 3-axis gantry system with rotary table for capturing photogrammetry images of mushrooms and generating 3D models." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://joshualobe.com/projects/robotics-sensing.html" />
   <script>
@@ -72,20 +72,47 @@
 
   <main class="mx-auto max-w-3xl px-6 py-10 md:py-16">
     <a href="/projects/" class="text-sm text-blue-600 dark:text-blue-400 hover:underline">← All Projects</a>
-    <h1 class="mt-4 text-3xl md:text-4xl font-extrabold tracking-tight">Robotics Sensing Experiments</h1>
+    <h1 class="mt-4 text-3xl md:text-4xl font-extrabold tracking-tight">Automated Mushroom 3D Scanning</h1>
     <div data-labels-for="robotics"></div>
 
     <figure class="mt-6 rounded-3xl overflow-hidden glow bg-zinc-100 dark:bg-zinc-900">
-      <img src="/assets/Images/robotics/IMG_4388.jpg" alt="Robotics sensing experiment setup" class="w-full h-full object-cover" loading="lazy" />
+      <img src="/assets/Images/robotics/IMG_4388.jpg" alt="Automated mushroom 3D scanning system" class="w-full h-full object-cover" loading="lazy" />
     </figure>
 
     <section class="mt-8 prose prose-zinc dark:prose-invert max-w-none">
       <h2>Overview</h2>
-      <p>[ Brief overview of the sensing setup and objectives. ]</p>
-      <h2>Hardware</h2>
-      <p>[ Force/torque sensors, robot platform, fixtures. ]</p>
-      <h2>Data & analysis</h2>
-      <p>[ Acquisition pipeline, filtering, alignment, and modeling. ]</p>
+      <p>
+        An automated 3-axis gantry system with a rotary table designed to capture photogrammetry images of mushrooms 
+        from multiple angles. The system spins mushrooms on the rotary table while the camera moves along a 3-axis 
+        gantry, collecting images from various perspectives to reconstruct detailed 3D models using photogrammetry techniques.
+      </p>
+
+      <h2>System Architecture</h2>
+      <p>
+        The scanning system uses a distributed control architecture:
+      </p>
+      <ul>
+        <li><strong>Raspberry Pi:</strong> Controls the camera capture and manages the rotary table movement</li>
+        <li><strong>Modified 3D Printer Board:</strong> Handles the 3-axis gantry motion control</li>
+        <li><strong>Stepper Motors:</strong> Three motors drive the X, Y, and Z axes of the gantry system</li>
+        <li><strong>Rotary Table:</strong> Spins the mushroom specimen to capture views from all angles</li>
+      </ul>
+
+      <h2>Operation</h2>
+      <p>
+        A mushroom is placed on the rotary table, which rotates continuously while the camera system moves through 
+        programmed positions along the 3-axis gantry. This creates a comprehensive image set covering the entire 
+        surface of the mushroom from multiple viewpoints. The collected images are then processed using photogrammetry 
+        software to generate accurate 3D models with texture mapping.
+      </p>
+
+      <h2>Features</h2>
+      <ul>
+        <li>Automated capture sequence with coordinated camera and table movement</li>
+        <li>High-resolution image collection for detailed 3D reconstruction</li>
+        <li>Precise stepper motor control for repeatable scanning patterns</li>
+        <li>Photogrammetry-based 3D model generation</li>
+      </ul>
     </section>
   </main>
 

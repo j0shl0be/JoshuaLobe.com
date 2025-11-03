@@ -101,41 +101,70 @@
     <h1 class="mt-4 text-3xl md:text-4xl font-extrabold tracking-tight">KB2040 Macropad (TinyUSB HID)</h1>
     <div data-labels-for="kb2040"></div>
 
-    <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
-      <figure class="rounded-3xl overflow-hidden glow bg-zinc-100 dark:bg-zinc-900">
-        <img src="/assets/Images/kb2040/22FCB75C-FBFF-48E4-AC0D-4F8636B1E984.jpg" alt="KB2040 macropad on desk" class="w-full h-full object-cover" loading="lazy" />
-      </figure>
-      <figure class="rounded-3xl overflow-hidden glow bg-zinc-100 dark:bg-zinc-900">
-        <img src="/assets/Images/kb2040/PXL_20250921_183319110.PORTRAIT.jpg" alt="Close-up portrait of KB2040 macropad" class="w-full h-full object-cover" loading="lazy" />
-      </figure>
-    </div>
-
     <section class="mt-8 prose prose-zinc dark:prose-invert max-w-none">
       <h2>Overview</h2>
       <p>
-        A compact macropad built on the KB2040 board with a multi-layer keymap, an OLED UI, and Adafruit TinyUSB for HID.
+        A 9-key macropad with a fader slider, built on the Adafruit KB2040 board. Features a multi-layer keymap system, 
+        OLED display for layer and status indication, and Adafruit TinyUSB for native USB HID communication. The device 
+        includes custom PCB design, mechanical housing, and companion software for volume control.
       </p>
 
-      <h2>Build notes</h2>
-      <p>[ Add a short summary of the hardware build, case, switches, and wiring. ]</p>
+      <h2>Hardware</h2>
+      <ul>
+        <li><strong>PCB Design:</strong> Custom board layout designed in Altium</li>
+        <li><strong>Mechanical Design:</strong> Enclosure and mounting designed in OnShape</li>
+        <li><strong>Controller:</strong> Adafruit KB2040 (RP2040-based)</li>
+        <li><strong>Inputs:</strong> 9 mechanical keys, linear fader</li>
+        <li><strong>Display:</strong> OLED screen for real-time layer and status feedback</li>
+        <li><strong>RGB LEDs:</strong> Per-layer color indication</li>
+      </ul>
 
       <h2>Firmware</h2>
-      <p>[ Describe the layer logic, TinyUSB HID approach, and OLED rendering. ]</p>
+      <p>
+        The firmware is written primarily in C++ (with some C components) and implements a multi-layer keymap system 
+        where each layer can have different functions mapped to keys, encoders, and the fader. The codebase uses Adafruit 
+        TinyUSB for USB HID communication, eliminating the need for Arduino's Keyboard.h library and providing better 
+        cross-platform compatibility. The OLED display shows the current active layer and system status, while RGB LEDs 
+        provide visual feedback corresponding to each layer's color scheme.
+      </p>
+      <p>
+        The firmware handles layer-aware logic for all inputs, including rotary encoders and the potentiometer/fader, which behave differently 
+        depending on the active layer, enabling flexible control schemes for different applications.
+      </p>
 
-      <h2>Gallery</h2>
-      <p>[ Add any additional photos or GIFs showing layers, encoder use, and OLED UI. ]</p>
+      <h2>Software</h2>
+      <p>
+        A companion Python program (<code>listener</code>) runs on the host computer to intercept HID messages from the 
+        macropad's fader and translate them into system volume control commands. This allows the linear fader to directly 
+        control the computer's master volume, providing tactile hardware control for audio levels.
+      </p>
 
       <h2>Features</h2>
       <ul>
+        <li>Multi-layer keymap system with configurable per-layer functions</li>
         <li>Layer-aware encoder & potentiometer logic</li>
         <li>OLED layer indicator with per-layer LED colors</li>
-        <li>USB HID via TinyUSB (no Keyboard.h)</li>
+        <li>USB HID via TinyUSB (native, no Keyboard.h dependency)</li>
+        <li>Hardware volume control via fader slider with host-side listener program</li>
+        <li>Custom PCB design for optimal component layout</li>
+        <li>Modular mechanical design in OnShape</li>
       </ul>
 
-      <h2>Links</h2>
+      <h2>Gallery</h2>
+      <div class="not-prose mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <figure class="rounded-3xl overflow-hidden glow bg-zinc-100 dark:bg-zinc-900">
+          <img src="/assets/Images/kb2040/22FCB75C-FBFF-48E4-AC0D-4F8636B1E984.jpg" alt="KB2040 macropad on desk" class="w-full h-full object-cover" loading="lazy" />
+        </figure>
+        <figure class="rounded-3xl overflow-hidden glow bg-zinc-100 dark:bg-zinc-900">
+          <img src="/assets/Images/kb2040/PXL_20250921_183319110.PORTRAIT.jpg" alt="Close-up portrait of KB2040 macropad" class="w-full h-full object-cover" loading="lazy" />
+        </figure>
+      </div>
+      <p class="mt-4">Additional photos showing the OLED UI, encoder operation, and different layer configurations.</p>
+
+      <h2>Code & Links</h2>
       <p>
-        <a href="#" class="underline">Firmware repo</a> •
-        <a href="#" class="underline">Build notes</a>
+        <a href="https://github.com/j0shl0be/Solo-Board1" target="_blank" rel="noopener" class="underline">Firmware repository (GitHub)</a> • 
+        <a href="https://github.com/j0shl0be/Solo-Board1/tree/main/listener" target="_blank" rel="noopener" class="underline">Volume control listener</a>
       </p>
     </section>
   </main>

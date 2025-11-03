@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="color-scheme" content="dark light" />
   <title>Sonos Controller — Joshua Lobe</title>
-  <meta name="description" content="Custom Sonos controller project details." />
+  <meta name="description" content="Battery-powered custom Sonos controller for hands-free speaker control and grouping, with Raspberry Pi server bridge." />
   <script>
     tailwind = { config: {
       darkMode: 'media',
@@ -23,7 +23,7 @@
       ]
     } };
   </script>
-  <script src="https://cdn.tailwindcss.com?v=3.4.0"></script>
+  <script src="https://cdn.tailwindcss.com?plugins=typography&v=3.4.0"></script>
   <script>
     // Apply saved theme preference before paint (robust: read item or property)
     (function() {
@@ -94,19 +94,88 @@
     <a href="/projects/" class="text-sm text-blue-600 dark:text-blue-400 hover:underline">← All Projects</a>
     <h1 class="mt-4 text-3xl md:text-4xl font-extrabold tracking-tight">Sonos Controller</h1>
     <div data-labels-for="sonos"></div>
-    <figure class="mt-6 rounded-3xl overflow-hidden glow bg-zinc-100 dark:bg-zinc-900">
-      <img src="/assets/Images/Sonos/IMG_5203.jpg" alt="Custom Sonos controller device" class="w-full h-full object-cover" loading="lazy" />
-    </figure>
 
     <section class="mt-8 prose prose-zinc dark:prose-invert max-w-none">
       <h2>Overview</h2>
-      <p>[ What the controller does, and why you built it. ]</p>
+      <p>
+        After Sonos updated their mobile app with an interface that was difficult to use, I built a dedicated hardware 
+        controller to manage my speakers. This was especially important since I cook frequently and needed a way to 
+        control music without handling my phone with dirty hands. The battery-powered device provides quick access to 
+        speaker controls and allows grouping multiple speakers together, all from a dedicated hardware interface.
+      </p>
+
+      <h2>System Architecture</h2>
+      <p>
+        The controller uses a three-tier architecture:
+      </p>
+      <ul>
+        <li><strong>Edge Node (Device):</strong> Battery-powered embedded controller with wireless connectivity and user interface</li>
+        <li><strong>Raspberry Pi Server:</strong> Middleware server that bridges the edge node to the Sonos network</li>
+        <li><strong>Sonos Speakers:</strong> Network-connected speakers controlled via Sonos HTTP API</li>
+      </ul>
+      <p>
+        The edge node communicates wirelessly with the Raspberry Pi server, which then translates commands into Sonos 
+        API calls to control playback, volume, and speaker grouping.
+      </p>
 
       <h2>Hardware</h2>
-      <p>[ Brief description of the enclosure, inputs, and connectivity. ]</p>
+      <ul>
+        <li><strong>Battery Powered:</strong> Portable operation without wall power dependency</li>
+        <li><strong>PCB Design:</strong> Custom board designed in Altium</li>
+        <li><strong>Wireless Connectivity:</strong> WiFi or Bluetooth for communication with Pi server</li>
+        <li><strong>User Interface:</strong> Buttons, encoders, and/or display for speaker selection and control</li>
+        <li><strong>Enclosure:</strong> Designed for kitchen-friendly use (withstands cooking environment)</li>
+      </ul>
 
-      <h2>Software</h2>
-      <p>[ Protocols, APIs, and control logic. ]</p>
+      <h2>Firmware & Server</h2>
+      <p>
+        The firmware runs on the edge node device, handling user input, wireless communication with the Pi server, 
+        and power management for extended battery life. The server code running on the Raspberry Pi manages the 
+        connection to the Sonos network, implements the Sonos HTTP/SOAP API communication, and handles speaker 
+        discovery, grouping, and control commands.
+      </p>
+      <p>
+        The edge node codebase (in the <code>edge-dev</code> branch) focuses on efficient power management, user 
+        interface responsiveness, and reliable wireless communication. The server code handles the complex Sonos API 
+        interactions, including grouping speakers, managing playlists, and controlling playback across the network.
+      </p>
+
+      <h2>Features</h2>
+      <ul>
+        <li>Battery-powered for portable, cord-free operation</li>
+        <li>Speaker control without needing a phone</li>
+        <li>Speaker grouping functionality</li>
+        <li>Volume and playback control</li>
+        <li>Kitchen-friendly design for hands-free operation while cooking</li>
+        <li>Custom PCB and enclosure design</li>
+      </ul>
+
+      <h2>Next Steps</h2>
+      <p>
+        Future iterations of the controller system are planned with two main directions:
+      </p>
+      <ul>
+        <li><strong>Gesture Control Version:</strong> A fully hands-free variant using gesture recognition technology, 
+        eliminating the need for any physical contact while cooking. This will enable complete voice and gesture-based 
+        control of Sonos speakers without touching any buttons or controls.</li>
+        <li><strong>Wall-Mounted Studio Controller:</strong> A large-format, wall-mounted unit featuring motorized 
+        faders for professional-style audio control. This version will provide tactile feedback and visual indication 
+        of current settings, designed for dedicated listening spaces and home studios.</li>
+      </ul>
+
+      <h2>Gallery</h2>
+      <div class="not-prose mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <figure class="rounded-3xl overflow-hidden glow bg-zinc-100 dark:bg-zinc-900">
+          <img src="/assets/Images/Sonos/IMG_5203.jpg" alt="Custom Sonos controller device" class="w-full h-full object-cover" loading="lazy" />
+        </figure>
+      </div>
+
+      <h2>Code & Links</h2>
+      <p>
+        <a href="https://github.com/j0shl0be/Sonos-Control-Edge-Node" target="_blank" rel="noopener" class="underline">Main repository (GitHub)</a> • 
+        <a href="https://github.com/j0shl0be/Sonos-Control-Edge-Node/tree/edge-dev" target="_blank" rel="noopener" class="underline">Edge node firmware (edge-dev branch)</a> • 
+        <a href="https://github.com/j0shl0be/Sonos-Control-Edge-Node/tree/main" target="_blank" rel="noopener" class="underline">Server code (main branch)</a>
+      </p>
     </section>
   </main>
 

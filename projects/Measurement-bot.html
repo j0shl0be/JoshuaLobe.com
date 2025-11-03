@@ -4,8 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="color-scheme" content="dark light" />
-  <title>Measurement Bot — Joshua Lobe</title>
-  <meta name="description" content="Automation and measurement bot notes and highlights." />
+  <title>Linear Measurement Device — Joshua Lobe</title>
+  <meta name="description" content="MTE-201 class project: automated linear measurement device with 0.6mm accuracy using stepper motor and limit switch sensing." />
   <script>
     tailwind = { config: {
       darkMode: 'media',
@@ -23,7 +23,7 @@
       ]
     } };
   </script>
-  <script src="https://cdn.tailwindcss.com?v=3.4.0"></script>
+  <script src="https://cdn.tailwindcss.com?plugins=typography&v=3.4.0"></script>
   <script>
     // Apply saved theme preference before paint (robust: read item or property)
     (function() {
@@ -92,29 +92,63 @@
 
   <main class="mx-auto max-w-3xl px-6 py-10 md:py-16">
     <a href="/projects/" class="text-sm text-blue-600 dark:text-blue-400 hover:underline">← All Projects</a>
-    <h1 class="mt-4 text-3xl md:text-4xl font-extrabold tracking-tight">Measurement Bot</h1>
+    <h1 class="mt-4 text-3xl md:text-4xl font-extrabold tracking-tight">Linear Measurement Device</h1>
     <div data-labels-for="measurement"></div>
-    <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
-      <figure class="rounded-3xl overflow-hidden glow bg-zinc-100 dark:bg-zinc-900">
-        <img src="/assets/Images/measurement/IMG_0440.jpg" alt="Measurement bot setup" class="w-full h-full object-cover" loading="lazy" />
-      </figure>
-      <figure class="rounded-3xl overflow-hidden glow bg-zinc-100 dark:bg-zinc-900">
-        <img src="/assets/Images/measurement/IMG_1705.jpg" alt="Measurement bot component detail" class="w-full h-full object-cover" loading="lazy" />
-      </figure>
-    </div>
 
     <section class="mt-8 prose prose-zinc dark:prose-invert max-w-none">
       <h2>Overview</h2>
-      <p>[ Briefly describe the task, sensors/actuators, and goals. ]</p>
+      <p>
+        A linear measurement device developed for MTE-201 (Measurement & Instrumentation). The device uses a stepper motor 
+        to drive a measurement probe until it contacts an object, triggering a limit switch. Statistical analysis of the 
+        step count is used to convert motor steps into accurate length measurements, achieving <strong>0.6 mm accuracy</strong>.
+      </p>
 
-      <h2>Mechanics</h2>
-      <p>[ Summarize motion system, transmission, and end-effector. ]</p>
+      <h2>Measurement Principle</h2>
+      <p>
+        The device measures linear dimensions by driving a probe forward with a stepper motor until it contacts the object. 
+        A limit switch detects the contact and stops the motor, recording the number of steps taken. The firmware converts 
+        this step count into a distance measurement using a calibrated conversion factor.
+      </p>
+      <p>
+        Statistical analysis of multiple measurements compensates for mechanical variations and improves reliability. Through 
+        careful calibration and statistical processing, the system achieves consistent <strong>0.6 mm accuracy</strong>.
+      </p>
 
-      <h2>Control & software</h2>
-      <p>[ Outline control loop, calibration, data capture, and processing. ]</p>
+      <h2>Hardware</h2>
+      <ul>
+        <li><strong>Stepper Motor:</strong> Provides precise linear motion control</li>
+        <li><strong>Limit Switch:</strong> Detects contact with the measured object</li>
+        <li><strong>Measurement Probe:</strong> End-effector that makes physical contact</li>
+        <li><strong>Motion System:</strong> Linear guide and transmission for accurate positioning</li>
+      </ul>
+
+      <h2>Firmware</h2>
+      <p>
+        The firmware is written in C++ and C using PlatformIO. It handles stepper motor control, limit switch sensing, 
+        and implements statistical algorithms to convert step counts into reliable length measurements. The codebase 
+        includes motor control logic, sensor interfacing, and data processing routines to achieve the target accuracy.
+      </p>
 
       <h2>Results</h2>
-      <p>[ Add key results, charts, and learnings. ]</p>
+      <p>
+        The device successfully measures linear dimensions with <strong>0.6 mm accuracy</strong>, validating the approach 
+        of combining precise stepper motor control with statistical processing for improved measurement reliability.
+      </p>
+
+      <h2>Gallery</h2>
+      <div class="not-prose mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <figure class="rounded-3xl overflow-hidden glow bg-zinc-100 dark:bg-zinc-900">
+          <img src="/assets/Images/measurement/IMG_0440.jpg" alt="Measurement bot setup" class="w-full h-full object-cover" loading="lazy" />
+        </figure>
+        <figure class="rounded-3xl overflow-hidden glow bg-zinc-100 dark:bg-zinc-900">
+          <img src="/assets/Images/measurement/IMG_1705.jpg" alt="Measurement bot component detail" class="w-full h-full object-cover" loading="lazy" />
+        </figure>
+      </div>
+
+      <h2>Code & Links</h2>
+      <p>
+        <a href="https://github.com/j0shl0be/MTE-201-Measurement-Device" target="_blank" rel="noopener" class="underline">Firmware repository (GitHub)</a>
+      </p>
     </section>
   </main>
 
