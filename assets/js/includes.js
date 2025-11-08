@@ -30,14 +30,12 @@ document.addEventListener("DOMContentLoaded", async () => {
     // For best results provide a PNG at /apple-touch-icon.png, but this reduces 404 noise.
     ensureLink('apple-touch-icon', '/assets/favicon.svg', 'image/svg+xml', '180x180');
   } catch (e) {}
-  // Implement DevTools-like behavior: toggle prefers-color-scheme via override class
-  // We simulate it by setting a data attribute read by Tailwind darkMode:'media' via CSS override
+  // Remove old data-theme attributes if they exist (cleanup from old implementation)
   try {
-    const saved = localStorage.getItem('theme') || localStorage.theme; // 'dark' | 'light' | undefined
-    if (saved === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
-    else if (saved === 'light') document.documentElement.setAttribute('data-theme', 'light');
-    else document.documentElement.removeAttribute('data-theme');
+    document.documentElement.removeAttribute('data-theme');
   } catch (e) {}
+
+  // Theme is already initialized in <head> script, no need to reapply here
 
   await inject("#site-header", "/assets/header.html");
   await inject("#site-footer", "/assets/footer.html");
@@ -248,9 +246,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   // Bind theme toggle
   const updateToggleIcon = () => {
     const btn = document.getElementById('themeToggle');
-    const forced = document.documentElement.getAttribute('data-theme');
-    const isDark = forced ? (forced === 'dark') : window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const isDark = document.documentElement.classList.contains('dark');
     if (btn) btn.textContent = isDark ? '🌞' : '🌓';
+    console.log('Current mode:', isDark ? 'DARK' : 'LIGHT', '| classList:', document.documentElement.className);
   };
   updateToggleIcon();
   if (!window.__themeToggleBound) {
@@ -258,17 +256,33 @@ document.addEventListener("DOMContentLoaded", async () => {
       const t = e.target && e.target.closest ? e.target.closest('#themeToggle') : null;
       if (!t) return;
       e.preventDefault();
-      // Flip forced theme like DevTools: set data-theme to 'dark' or 'light'
-      const forced = document.documentElement.getAttribute('data-theme');
-      const isDark = forced ? (forced === 'dark') : window.matchMedia('(prefers-color-scheme: dark)').matches;
-      const next = isDark ? 'light' : 'dark';
-      document.documentElement.setAttribute('data-theme', next);
-      try {
-        const val = next;
-        localStorage.setItem('theme', val);
-        localStorage.theme = val;
-      } catch (e) {}
+
+      // Toggle dark class
+      const wasDark = document.documentElement.classList.contains('dark');
+
+      if (wasDark) {
+        // Switch to light mode
+        document.documentElement.classList.remove('dark');
+        try {
+          localStorage.setItem('theme', 'light');
+          localStorage.theme = 'light';
+        } catch (e) {}
+      } else {
+        // Switch to dark mode
+        document.documentElement.classList.add('dark');
+        try {
+          localStorage.setItem('theme', 'dark');
+          localStorage.theme = 'dark';
+        } catch (e) {}
+      }
+
+      // Force browser to recalculate styles
+      void document.documentElement.offsetHeight;
+
       updateToggleIcon();
+      console.log('Theme toggled:', wasDark ? 'dark -> light' : 'light -> dark');
+      console.log('HTML classes after toggle:', document.documentElement.className);
+      console.log('Body background:', window.getComputedStyle(document.body).backgroundColor);
     });
     window.__themeToggleBound = true;
   }

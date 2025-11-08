@@ -11,15 +11,6 @@
   .brand-dropdown .menu a:hover { background: #f6f6f7; }
   html.dark .brand-dropdown .menu a:hover { background: #18181b; }
 </style>
-<style>
-  /* Simulate DevTools color-scheme toggle for darkMode:'media' */
-  @media (prefers-color-scheme: dark) {
-    html[data-theme="light"] { filter: invert(1) hue-rotate(180deg); }
-  }
-  @media (prefers-color-scheme: light) {
-    html[data-theme="dark"] { filter: invert(1) hue-rotate(180deg); }
-  }
-</style>
 <header class="sticky top-0 z-50 backdrop-blur bg-white/70 dark:bg-zinc-950/70 border-b border-zinc-200/60 dark:border-zinc-800/60">
     <div class="mx-auto max-w-6xl px-6 py-4 flex items-center justify-between">
       <div class="brand-dropdown">

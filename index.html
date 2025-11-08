@@ -14,7 +14,7 @@
   <script>
     // Tailwind Play CDN config before load with required safelist (header is injected later)
     tailwind = { config: {
-      darkMode: 'media',
+      darkMode: 'class',
       safelist: [
         'sticky','top-0','z-50','backdrop-blur',
         'bg-white/70','dark:bg-zinc-950/70','border-b','border-zinc-200/60','dark:border-zinc-800/60',
@@ -31,6 +31,79 @@
   <script src="https://cdn.tailwindcss.com?plugins=typography&v=3.4.0"></script>
   <style>
     .glow { box-shadow: 0 0 0 1px rgba(255,255,255,0.06), 0 10px 30px rgba(0,0,0,0.2); }
+
+    /* Manual dark mode overrides - Tailwind CDN isn't updating dynamically */
+    html.dark {
+      color-scheme: dark;
+    }
+    html.dark body {
+      background-color: rgb(9 9 11) !important;
+      color: rgb(244 244 245) !important;
+    }
+
+    /* Dark mode - backgrounds */
+    html.dark .bg-white {
+      background-color: rgb(9 9 11) !important;
+    }
+    html.dark .bg-zinc-100 {
+      background-color: rgb(24 24 27) !important;
+    }
+    html.dark .bg-zinc-50 {
+      background-color: rgb(24 24 27) !important;
+    }
+    html.dark .bg-blue-600 {
+      background-color: rgb(37 99 235) !important;
+    }
+
+    /* Dark mode - text colors */
+    html.dark .text-zinc-900,
+    html.dark h1, html.dark h2, html.dark h3, html.dark h4, html.dark h5, html.dark h6 {
+      color: rgb(244 244 245) !important;
+    }
+    html.dark .text-zinc-600,
+    html.dark p {
+      color: rgb(212 212 216) !important;
+    }
+    html.dark .text-zinc-500 {
+      color: rgb(161 161 170) !important;
+    }
+    html.dark .text-blue-600 {
+      color: rgb(96 165 250) !important;
+    }
+
+    /* Dark mode - borders */
+    html.dark .border-zinc-300,
+    html.dark .border-zinc-200 {
+      border-color: rgb(63 63 70) !important;
+    }
+    html.dark header {
+      background-color: rgba(9, 9, 11, 0.7) !important;
+      border-color: rgba(63, 63, 70, 0.6) !important;
+    }
+
+    /* Light mode - ensure proper colors */
+    html:not(.dark) body {
+      background-color: rgb(255 255 255) !important;
+      color: rgb(24 24 27) !important;
+    }
+    html:not(.dark) .bg-white {
+      background-color: rgb(255 255 255) !important;
+    }
+    html:not(.dark) .text-zinc-900,
+    html:not(.dark) h1, html:not(.dark) h2, html:not(.dark) h3, html:not(.dark) h4, html:not(.dark) h5, html:not(.dark) h6 {
+      color: rgb(24 24 27) !important;
+    }
+    html:not(.dark) .text-zinc-600,
+    html:not(.dark) p {
+      color: rgb(82 82 91) !important;
+    }
+    html:not(.dark) .text-blue-600 {
+      color: rgb(37 99 235) !important;
+    }
+    html:not(.dark) header {
+      background-color: rgba(255, 255, 255, 0.7) !important;
+      border-color: rgba(228, 228, 231, 0.6) !important;
+    }
   </style>
   <style>
     /* Decorative scroll-reactive shape on the right */
@@ -270,7 +343,7 @@
   </section>
 
   <div id="site-footer"></div>
-  <script src="/assets/js/includes.js?v=3"></script>
+  <script src="/assets/js/includes.js?v=6"></script>
   <script>
     // Force-download the resume PDF even if the browser prefers to preview it
     document.addEventListener('click', async (e) => {

@@ -1,6 +1,6 @@
 {
-  "featured": "hotdog-robot",
-  "home": ["sonos-controller", "kb2040-macropad", "robotics-sensing"]
+  "featured": "sonos-controller",
+  "home": ["hotdog-robot", "kb2040-macropad", "robotics-sensing"]
 }
 
 
